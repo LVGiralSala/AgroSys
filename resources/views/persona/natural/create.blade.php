@@ -464,7 +464,7 @@
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label for="pasivos">Pasivos</label>
-                <input type="text" class="form-control" id="pasivos" name="pasivos" required onchange="calcPatrimonio(this.value);">
+                <input type="text" class="form-control" id="pasivos" name="pasivos" required onchange="calcPatrimonio();">
             </div>     
           </div>
 

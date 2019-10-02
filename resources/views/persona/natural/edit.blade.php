@@ -47,6 +47,33 @@
 
       <!-- #tab1 -->
       <div id="tab1" class="container tab-pane active"><br>
+        <!-- 0 -->
+        <div class="row">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+            <div class="form-group">
+                <label for="id_estado_cliente">Estado</label>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="id_estado_cliente"  value="1" required
+                        <?php if($persona_natural->id_estado_cliente == 1) echo 'checked'?>>
+                        <label class="form-check-label" for="id_estado_cliente">Activo</label>
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="id_estado_cliente"  value="2"
+                        <?php if($persona_natural->id_estado_cliente == 2) echo 'checked'?>>
+                        <label class="form-check-label" for="id_estado_cliente">Inactivo</label>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- 0 -->
+
         <!-- 1 -->
         <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
@@ -475,15 +502,16 @@
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
           <div class="form-group">
               <label for="activos">Activos</label>
-          <input type="text" class="form-control" id="activos" name="activos" required 
-          value="{{$info_financiera->activos}}">
+          <input type="text" class="form-control" id="activosEdit" name="activos" required 
+          value="{{$info_financiera->activos}}" onchange="calcPatrimonioEdit();">
           </div>     
         </div>
 
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
           <div class="form-group">
               <label for="pasivos">Pasivos</label>
-              <input type="text" class="form-control" id="pasivos" name="pasivos" value="{{$info_financiera->pasivos}}" required onchange="calcPatrimonio(this.value);" 
+              <input type="text" class="form-control" id="pasivosEdit" name="pasivos" value="{{$info_financiera->pasivos}}" required 
+              onchange="calcPatrimonioEdit();" 
               >
           </div>     
         </div>
@@ -491,7 +519,7 @@
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
           <div class="form-group">
               <label for="patrimonio">Patrimonio</label>
-              <input type="text" class="form-control" id="patrimonio" name="patrimonio" readonly>
+              <input type="text" class="form-control" id="patrimonioEdit" name="patrimonio" readonly>
           </div>     
         </div>
 
