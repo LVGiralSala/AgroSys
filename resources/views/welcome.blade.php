@@ -8,9 +8,9 @@
 
     <body>
         <!-- HEADER -->
-        @include('layouts.partials.header1')
+        @include('layouts.partials.header_log')
         <!-- end HEADER -->
-        
+        <h1>HOME</h1>
         <!-- SCRIPTS -->
         @include('layouts.partials.scripts')
         <!-- end SCRIPTS -->
