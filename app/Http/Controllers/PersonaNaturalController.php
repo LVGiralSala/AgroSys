@@ -179,7 +179,7 @@ class PersonaNaturalController extends Controller
         $info_finan->id=$request->get('num_identificacion');
         $info_finan->activos=$request->get('activos');
         $info_finan->pasivos=$request->get('pasivos');
-        $info_finan->patrimonio=$request->get('patrimonio');
+        $info_finan->patrimonio="2";
         $info_finan->ingresos_mensuales=$request->get('ingresos_mensuales');
         $info_finan->egresos_mensuales=$request->get('egresos_mensuales');
         $info_finan->otros_ingresos=$request->get('otros_ingresos');
@@ -396,21 +396,27 @@ class PersonaNaturalController extends Controller
      */
     public function update(PersonaNaturalFormRequest $request)
     {
-        $mytime =Carbon::now('America/Bogota');
         $id = $request->get('num_identificacion');
-
-        /**
-         * Básica
-         */
         $persona_natural = persona_natural::find($id);
+        $mytime =Carbon::now('America/Bogota');
+        $persona_natural->id_user='1';
         $persona_natural->id_trader='1';
-        $persona_natural->id_estado_cliente=$request->get('id_estado_cliente');
+        $persona_natural->id_tipo_persona='1';
+        $persona_natural->id_estado_cliente='1';
+        $persona_natural->fecha_diligenciamiento=$mytime->toDateTimeString();
         $persona_natural->id_ciudad_vinculacion=$request->get('id_ciudad_vinculacion');
         $persona_natural->id_tipo_vinculacion=$request->get('id_tipo_vinculacion');
         $persona_natural->fecha_vinculacion=$request->get('fecha_vinculacion');
         $persona_natural->id_clase_vinculacion=$request->get('id_clase_vinculacion');
         $persona_natural->id_instrumento_financiero=$request->get('id_instrumento_financiero');
-        // $persona_natural->id_estado_datos='1';
+        $persona_natural->id_estado_datos='1';
+        $persona_natural->nombres=$request->get('nombres');
+        $persona_natural->apellidos=$request->get('apellidos');
+        $persona_natural->tipo_identificacion=$request->get('tipo_identificacion');
+        $persona_natural->id=$request->get('num_identificacion');
+        $persona_natural->fecha_exp_doc=$request->get('fecha_exp_doc');
+        $persona_natural->lugar_exp_doc=$request->get('lugar_exp_doc');
+        $persona_natural->id_genero=$request->get('id_genero');
         $persona_natural->id_estado_civil=$request->get('id_estado_civil');
         $persona_natural->id_tipo_cliente=$request->get('id_tipo_cliente');
         $persona_natural->direccion_residencia=$request->get('direccion_residencia');
@@ -435,136 +441,7 @@ class PersonaNaturalController extends Controller
         $persona_natural->nombre_cargo_publico=$request->get('nombre_cargo_publico');
         $persona_natural->institucion_cargo_publico=$request->get('institucion_cargo_publico');
         $persona_natural->manejo_recursos_publicos=$request->get('manejo_recursos_publicos');
-
-        /**
-         * Básica
-         */
-
-        /**
-         * info finan
-         */
-        $info_finan=pn_info_financiera::find($id);
-        $info_finan->activos=$request->get('activos');
-        $info_finan->pasivos=$request->get('pasivos');
-        $act = $request->get('activos');
-        $pas = $request->get('pasivos');
-        $pat = $act - $pas;
-        $info_finan->patrimonio=$pat;
-        $info_finan->ingresos_mensuales=$request->get('ingresos_mensuales');
-        $info_finan->egresos_mensuales=$request->get('egresos_mensuales');
-        $info_finan->otros_ingresos=$request->get('otros_ingresos');
-        $info_finan->detalle_otros_ingresos=$request->get('detalle_otros_ingresos');
-        $info_finan->otros_egresos=$request->get('otros_egresos');
-        $info_finan->detalle_otros_egresos=$request->get('detalle_otros_egresos');
-        $info_finan->id_detalle_actividad=$request->get('id_detalle_actividad');
-        $info_finan->explicacion_actividad=$request->get('explicacion_actividad');
-        $info_finan->id_tipo_regimen=$request->get('id_tipo_regimen');
-        $info_finan->id_codigo_CIIU=$request->get('id_codigo_CIIU');
-        $info_finan->declaracion_renta=$request->get('declaracion_renta');
-
-        /**
-         * info finan
-         */
-
-
-        /**
-         * Origen Fondos
-         */
-        $origen_fondos = pn_origen_fondos::find($id);
-        $origen_fondos->id_tipo_fuente_fondos=$request->get('id_tipo_fuente_fondos');
-        $origen_fondos->entidad_referencia_comercial=$request->get('entidad_referencia_comercial');
-        $origen_fondos->direccion_referencia_comercial=$request->get('direccion_referencia_comercial');
-        $origen_fondos->telefono_referencia_comercial=$request->get('telefono_referencia_comercial');
-        $origen_fondos->id_entidad_cuenta_bancaria_1=$request->get('id_entidad_cuenta_bancaria_1');
-        $origen_fondos->num_cuenta_bancaria_1=$request->get('num_cuenta_bancaria_1');
-        $origen_fondos->id_tipo_cuenta_bancaria_1=$request->get('id_tipo_cuenta_bancaria_1');
-        $origen_fondos->id_entidad_cuenta_bancaria_2=$request->get('id_entidad_cuenta_bancaria_2');
-        $origen_fondos->num_cuenta_bancaria_2=$request->get('num_cuenta_bancaria_2');
-        $origen_fondos->id_tipo_cuenta_bancaria_2=$request->get('id_tipo_cuenta_bancaria_2');
-
-         /**
-         * Origen Fondos
-         */
-
-         /**
-         * Operaciones Moneda Extranjera
-         */
-        $op_mon_ext= pn_operaciones_moneda_extranjera::find($id);
-        $op_mon_ext->cuentas_moneda_extranjera=$request->get('cuentas_moneda_extranjera');
-        $op_mon_ext->cuenta_compensacion=$request->get('cuenta_compensacion');
-        $op_mon_ext->id_tipo_transaccion=$request->get('id_tipo_transaccion');
-        $op_mon_ext->entidad_cuenta_bancaria_me_1=$request->get('entidad_cuenta_bancaria_me_1');
-        $op_mon_ext->num_cuenta_bancaria_me_1=$request->get('num_cuenta_bancaria_me_1');
-        $op_mon_ext->ciudad_cuenta_bancaria_me_1=$request->get('ciudad_cuenta_bancaria_me_1');
-        $op_mon_ext->pais_cuenta_bancaria_me_1=$request->get('pais_cuenta_bancaria_me_1');
-        $op_mon_ext->id_tipo_moneda_me_1=$request->get('id_tipo_moneda_me_1');
-        // $op_mon_ext->entidad_cuenta_bancaria_me_2=$request->get('entidad_cuenta_bancaria_me_2');
-        // $op_mon_ext->num_cuenta_bancaria_me_2=$request->get('num_cuenta_bancaria_me_2');
-        // $op_mon_ext->num_cuenta_bancaria_me_2=$request->get('num_cuenta_bancaria_me_2');
-        // $op_mon_ext->pais_cuenta_bancaria_me_2=$request->get('pais_cuenta_bancaria_me_2');
-        // $op_mon_ext->id_tipo_moneda_me_2=$request->get('id_tipo_moneda_me_2');
-
-         /**
-         * Operaciones Moneda Extranjera
-         */
-
-          /**
-         * Declaraciones FACTA
-         */
-        $dec_facta = pn_declaraciones_facta::find($id);
-        $dec_facta->obligaciones_tributarias_EEUU_US=$request->get('obligaciones_tributarias_EEUU_US');
-        $dec_facta->especificacion_obligaciones_tributarias=$request->get('especificacion_obligaciones_tributarias');
-        $dec_facta->num_TIN_equivalente=$request->get('num_TIN_equivalente');
-        
-          /**
-         * Declaraciones FACTA
-         */
-
-          /**
-         * Declaraciones CRS
-         */
-        $dec_crs = pn_declaraciones_crs::find($id);
-        $dec_crs->obligaciones_fiscales_otros_paises=$request->get('obligaciones_fiscales_otros_paises');
-        $dec_crs->especificacion_obligaciones_fiscales=$request->get('especificacion_obligaciones_fiscales');
-        $dec_crs->id_pais_obligaciones_fiscales=$request->get('id_pais_obligaciones_fiscales');
-        $dec_crs->num_identificacion_fiscal_equivalente=$request->get('num_identificacion_fiscal_equivalente');
-        
-          /**
-         * Declaraciones CRS
-         */
-
-         /**
-         * Ordenantes
-         */
-        $orden= pn_ordenantes::find($id);
-        $orden->nombres_ordenante_1=$request->get('nombres_ordenante_1');
-        $orden->apellidos_ordenante_1=$request->get('apellidos_ordenante_1');
-        $orden->tipo_identificacion_ordenante_1=$request->get('tipo_identificacion_ordenante_1');
-        $orden->num_identificacion_ordenante_1=$request->get('num_identificacion_ordenante_1');
-        $orden->direccion_ordenante_1=$request->get('direccion_ordenante_1');
-        $orden->telefono_ordenante_1=$request->get('telefono_ordenante_1');
-        $orden->parentesco_ordenante_1=$request->get('parentesco_ordenante_1');
-        // $orden->id_calidad_ordenante_1=$request->get('id_calidad_ordenante_1');
-        // $orden->nombres_ordenante_2=$request->get('nombres_ordenante_2');
-        // $orden->apellidos_ordenante_2=$request->get('apellidos_ordenante_2');
-        // $orden->tipo_identificacion_ordenante_2=$request->get('tipo_identificacion_ordenante_2');
-        // $orden->num_identificacion_ordenante_2=$request->get('num_identificacion_ordenante_2');
-        // $orden->direccion_ordenante_2=$request->get('direccion_ordenante_2');
-        // $orden->telefono_ordenante_2=$request->get('telefono_ordenante_2');
-        // $orden->parentesco_ordenante_2=$request->get('parentesco_ordenante_2');
-        // $orden->id_calidad_ordenante_2=$request->get('id_calidad_ordenante_2');
-
-         /**
-         * Ordenantes
-         */
-
         $persona_natural->update();
-        $info_finan->update();
-        $origen_fondos->update();
-        $op_mon_ext->update();
-        $dec_facta->update();
-        $dec_crs->update();
-        $orden->update();
         return Redirect::to('persona_natural')->with('success', 'Persona Natural is successfully updated');
     }
 

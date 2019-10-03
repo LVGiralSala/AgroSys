@@ -65,7 +65,7 @@
       
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
-                <label for="num_identificacion">N° Identificación</label>
+                <label for="num_identificacion">Número Identificación</label>
                 <input type="text" class="form-control" name="num_identificacion" required>
             </div>     
           </div>
@@ -464,7 +464,7 @@
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label for="pasivos">Pasivos</label>
-                <input type="text" class="form-control" id="pasivos" name="pasivos" required onchange="calcPatrimonio();">
+                <input type="text" class="form-control" id="pasivos" name="pasivos" required onchange="calcPatrimonio(this.value);">
             </div>     
           </div>
 
@@ -656,7 +656,7 @@
 
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
               <div class="form-group">
-                  <label for="id_tipo_cuenta_bancaria_1">Tipo Cuenta</label>
+                  <label for="id_tipo_cuenta_bancaria_1">Tipo Cuenta Bancaria</label>
                   <select name="id_tipo_cuenta_bancaria_1" class="form-control" required>
                     @foreach ($tipos_cuentas_bancarias as $tp_cb)
                   <option value="{{$tp_cb->id}}" selected>{{$tp_cb->tipo_cuenta_bancaria}}</option>

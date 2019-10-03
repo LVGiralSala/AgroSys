@@ -46,25 +46,13 @@
     });
 
     function calcPatrimonio(){
-        ac = document.getElementById("activos").value;
-        // document.getElementById("activos"). value = "$ " + ac;
-        pa = document.getElementById("pasivos").value;
-        // document.getElementById("pasivos"). value = "$ " + pa;
-        totalPat = ac - pa;
-        document.getElementById("patrimonio").placeholder = totalPat;
-    }
-
-    function calcPatrimonioEdit(){
-
-        ac = document.getElementById("activosEdit").value;
-        pa = document.getElementById("pasivosEdit").value;
-        
-        totalPat = ac - pa;
-        document.getElementById("patrimonioEdit").placeholder = totalPat;
-        
-            // document.getElementById("activos"). value = "$ " + ac;
-            // document.getElementById("pasivos"). value = "$ " + pa;
-    }
+                ac = document.getElementById("activos").value;
+                // document.getElementById("activos"). value = "$ " + ac;
+                pa = document.getElementById("pasivos").value;
+                // document.getElementById("pasivos"). value = "$ " + pa;
+                totalPat = ac - pa;
+                document.getElementById("patrimonio").placeholder = totalPat;
+            }
 
     // function searchRegister(numIdenti){
     //     alert("Hello! I am an alert box!" + numIdenti);
