@@ -96,7 +96,7 @@
             
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
               <div class="form-group">
-                  <label for="num_identificacion">Número Identificación</label>
+                  <label for="num_identificacion">N° Identificación</label>
                   <input type="Integer" class="form-control" name="num_identificacion" required value="{{$persona_natural->id}}" readonly>
               </div>     
             </div>
@@ -721,7 +721,7 @@
 
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
-                <label for="id_tipo_cuenta_bancaria_1">Tipo Cuenta Bancaria</label>
+                <label for="id_tipo_cuenta_bancaria_1">Tipo Cuenta</label>
                 <select name="id_tipo_cuenta_bancaria_1" class="form-control" required>
                   @foreach ($tipos_cuentas_bancarias as $tp_cb)
                 <option <?php if( $tp_cb->id == $origen_fondos->id_tipo_cuenta_bancaria_1) echo 'selected'?>
