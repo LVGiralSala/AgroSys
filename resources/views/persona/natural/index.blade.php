@@ -1,15 +1,7 @@
 @extends ('layouts.app')
 @section ('contenido')  
 
-{{-- <div class="container">
-<div class="row"> --}}
-  {{-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-    <h3 class="aligncenter">Listado de Personas Naturales<a href="natural/create"><button class="btn btn-success" style="background-color: #5FA665">Nuevo</button></a></h3>
-
-        @include('orden.financiera.search')
-
-  </div> --}}
-  {{-- @include('persona.natural.search') --}}
+  
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
@@ -22,6 +14,9 @@
               
             <a href="{{route('pn.excel')}}"><button class="btn btn-success" ><i class="fas fa-download"></i>     Exportar</button></a>
           </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+              @include('persona.natural.search')
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -49,7 +44,7 @@
                      <td>{{ $item->email }}</td>
                      <td>{{ $item->persona_expuesta_publicamente }}</td>
                      <td> 
-                      <a href="{{URL::action('PersonaNaturalController@edit',$item->id)}}"><button class="btn-success" style="background-color: #5FA665">Editar</button></a>
+                      <a href="{{URL::action('PersonaNaturalController@edit',$item->id)}}"><button class="btn-success" style="background-color: #447161; border:0">Editar</button></a>
                      </td>
                    </tr>
             @endforeach 
