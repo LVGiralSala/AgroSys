@@ -308,8 +308,8 @@
 
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
-                <label for="profesion">Ocupación/Oficio/Profesión</label>
-                <input type="text" class="form-control" name="profesion">
+                <label for="id_ocupacion">Ocupación/Oficio/Profesión</label>
+                <input type="text" class="form-control" name="id_ocupacion" onblur="searchOcupacion(this.value)">
             </div>     
           </div>
 

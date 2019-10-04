@@ -38,6 +38,7 @@ class PersonaNaturalFormRequest extends FormRequest
             'id_ciudad_vinculacion'=>'required',
             'id_tipo_vinculacion'=>'required',
             'id_clase_vinculacion'=>'required',
+            'id_ocupacion'=>'required',
             'fecha_vinculacion'=>'required',
             // 'fecha_diligenciamiento'=>'required',
             // 'id_user'=>'required',

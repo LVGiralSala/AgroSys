@@ -25,6 +25,7 @@ protected $fillable = [
         'id_ciudad_residencia',
         'id_estado_civil',   
         'id_tipo_cliente', 
+        'id_ocupacion',
         'id_tipo_empresa',
         'fecha_diligenciamiento',	
         'fecha_exp_doc',
@@ -40,7 +41,6 @@ protected $fillable = [
         'cargo_desempenio',
         'direccion_oficina',
         'telefono_oficina',
-        'profesion',
         'vinculo_func_agrobolsa',
         'nombre_vinc_func_agrobolsa',
         'persona_expuesta_publicamente',
@@ -143,6 +143,11 @@ protected $guarded =[
     public function tipo_vinculaciona()
     {
         return $this->belongsTo(tipo_persona::class,'id_tipo_vinculacion');
+    }
+
+    public function ocupacion()
+    {
+        return $this->belongsTo(ocupacion::class,'id_ocupacion');
     }
 
     public function origen_fondo()

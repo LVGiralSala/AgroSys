@@ -53,5 +53,8 @@ Route::delete('producto','ProductoController@destroy')->name('pdto_destroy');
 
 // Search Routes...
 Route::post('sistema/buscar/ciiu','CiiuController@search')->name('ciiu');
+Route::post('sistema/buscar/ocupacion','OcupacionController@searchOcupacion')->name('ocupacion');
 
+
+// Excel Routes
 Route::get('pn-list-excel','ExcelController@exportExcel')->name('pn.excel');
