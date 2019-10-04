@@ -47,7 +47,7 @@ class PersonaNaturalController extends Controller
                      'if.instrumento_financiero as id_instrumento_financiero')
             ->where('pn.id','LIKE','%'.$query.'%')->get();
 
-            return view('persona.natural.index',["personas_naturales"=>$personas_naturales]);
+            return view('persona.natural.index',["personas_naturales"=>$personas_naturales, "searchText"=>$query]);
         }
     }
 
