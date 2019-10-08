@@ -9,7 +9,7 @@
 <div class="container">
     <body>
         <!-- HEADER -->
-        @include('layouts.partials.header')
+        @include('layouts.partials.header1')
         <!-- end HEADER -->
         
         <!-- SCRIPTS -->

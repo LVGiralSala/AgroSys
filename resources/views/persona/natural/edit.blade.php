@@ -47,6 +47,34 @@
 
       <!-- #tab1 -->
       <div id="tab1" class="container tab-pane active"><br>
+
+        <!-- 0 -->
+        <div class="row">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+            <div class="form-group">
+                <label for="id_estado_cliente">Estado</label>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="id_estado_cliente"  value="1" required
+                        <?php if($persona_natural->id_estado_cliente == 1) echo 'checked'?>>
+                        <label class="form-check-label" for="id_estado_cliente">Activo</label>
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="id_estado_cliente"  value="2"
+                        <?php if($persona_natural->id_estado_cliente == 2) echo 'checked'?>>
+                        <label class="form-check-label" for="id_estado_cliente">Inactivo</label>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- 0 -->
+
         <!-- 1 -->
         <div class="row">
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
@@ -322,8 +350,13 @@
     
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-group">
-                    <label for="profesion">Ocupación/Oficio/Profesión</label>
-                <input type="text" class="form-control" name="profesion" value="{{$persona_natural->profesion}}">
+                    <label for="id_ocupacion">Ocupación/Oficio/Profesión</label>
+                    <select name="id_ocupacion" class="form-control">
+                      @foreach($ocupaciones as $ocu)
+                        <option <?php if($ocu->id == $persona_natural->id_ocupacion) echo 'selected'?>
+                          value="{{$ocu->id}}">{{$ocu->ocupacion}}</option>
+                      @endforeach
+                    </select>
                 </div>     
             </div>
     

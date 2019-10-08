@@ -309,7 +309,11 @@
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label for="id_ocupacion">Ocupación/Oficio/Profesión</label>
-                <input type="text" class="form-control" name="id_ocupacion" onblur="searchOcupacion(this.value)">
+                <select name="id_ocupacion" class="form-control">
+                  @foreach($ocupaciones as $ocu)
+                    <option value="{{$ocu->id}}" selected>{{$ocu->ocupacion}}</option>
+                  @endforeach
+                </select>
             </div>     
           </div>
 
