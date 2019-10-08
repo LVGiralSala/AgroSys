@@ -145,7 +145,7 @@ class PersonaNaturalController extends Controller
         $persona_natural->lugar_exp_doc=$request->get('lugar_exp_doc');
         $persona_natural->id_genero=$request->get('id_genero');
         $persona_natural->id_estado_civil=$request->get('id_estado_civil');
-        $persona_natural->id_tipo_cliente='1';
+        $persona_natural->id_tipo_cliente=$request->get('id_tipo_cliente');;
         $persona_natural->direccion_residencia=$request->get('direccion_residencia');
         $persona_natural->id_ciudad_residencia=$request->get('id_ciudad_residencia');
         $persona_natural->telefono=$request->get('telefono');
@@ -159,6 +159,7 @@ class PersonaNaturalController extends Controller
         $persona_natural->direccion_oficina=$request->get('direccion_oficina');
         $persona_natural->telefono_oficina=$request->get('telefono_oficina');
         $persona_natural->id_tipo_empresa=$request->get('id_tipo_empresa');
+        $persona_natural->tipo_empresa=$request->get('tipo_empresa');
         $persona_natural->id_ocupacion=$request->get('id_ocupacion');
         $persona_natural->vinculo_func_agrobolsa=$request->get('vinculo_func_agrobolsa');
         $persona_natural->nombre_vinc_func_agrobolsa=$request->get('nombre_vinc_func_agrobolsa');
@@ -437,6 +438,7 @@ class PersonaNaturalController extends Controller
         $persona_natural->direccion_oficina=$request->get('direccion_oficina');
         $persona_natural->telefono_oficina=$request->get('telefono_oficina');
         $persona_natural->id_tipo_empresa=$request->get('id_tipo_empresa');
+        $persona_natural->tipo_empresa=$request->get('tipo_empresa');
         $persona_natural->id_ocupacion=$request->get('id_ocupacion');
         $persona_natural->vinculo_func_agrobolsa=$request->get('vinculo_func_agrobolsa');
         $persona_natural->nombre_vinc_func_agrobolsa=$request->get('nombre_vinc_func_agrobolsa');

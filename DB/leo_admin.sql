@@ -2279,10 +2279,14 @@ CREATE TABLE IF NOT EXISTS `documento_constitucion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `documento_contitucion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.documento_constitucion: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.documento_constitucion: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `documento_constitucion` DISABLE KEYS */;
+REPLACE INTO `documento_constitucion` (`id`, `documento_contitucion`) VALUES
+	(1, 'Escritura Pública'),
+	(2, 'Documento Privado'),
+	(3, 'Otro');
 /*!40000 ALTER TABLE `documento_constitucion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.entidad_bancaria
@@ -2362,10 +2366,14 @@ CREATE TABLE IF NOT EXISTS `info_tributaria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `informacion_tributaria` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.info_tributaria: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.info_tributaria: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `info_tributaria` DISABLE KEYS */;
+REPLACE INTO `info_tributaria` (`id`, `informacion_tributaria`) VALUES
+	(1, 'Gran Contribuyente'),
+	(2, 'Autoretenedor'),
+	(3, 'Sujeto a Retención');
 /*!40000 ALTER TABLE `info_tributaria` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.instrumento_financiero
@@ -12962,10 +12970,15 @@ CREATE TABLE IF NOT EXISTS `origen_recursos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `origen_recursos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.origen_recursos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.origen_recursos: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `origen_recursos` DISABLE KEYS */;
+REPLACE INTO `origen_recursos` (`id`, `origen_recursos`) VALUES
+	(1, 'Actividad Económica'),
+	(2, 'Rentas'),
+	(3, 'Excedentes'),
+	(4, 'Otra');
 /*!40000 ALTER TABLE `origen_recursos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.permisos
@@ -13014,6 +13027,8 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `celular_oficina` int(11) DEFAULT NULL,
   `fax_oficina` int(11) DEFAULT NULL,
   `pagina_web` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `doc_constitucion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo_empresa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lista_clinton` tinyint(1) NOT NULL,
   `lista_ONU` tinyint(1) NOT NULL,
@@ -13092,6 +13107,7 @@ CREATE TABLE IF NOT EXISTS `persona_natural` (
   `cargo_desempenio` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telefono_oficina` bigint(20) DEFAULT NULL,
   `direccion_oficina` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo_empresa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fecha_vinculacion` date NOT NULL,
   `lista_clinton` tinyint(1) NOT NULL,
   `lista_ONU` tinyint(1) NOT NULL,
@@ -13142,17 +13158,17 @@ CREATE TABLE IF NOT EXISTS `persona_natural` (
 
 -- Volcando datos para la tabla leo_admin.persona_natural: ~10 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona_natural` DISABLE KEYS */;
-REPLACE INTO `persona_natural` (`id`, `tipo_identificacion`, `lugar_exp_doc`, `id_estado_civil`, `id_genero`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_residencia`, `id_ciudad_trabajo`, `id_tipo_vinculacion`, `id_ciudad_vinculacion`, `id_clase_vinculacion`, `id_tipo_persona`, `id_tipo_cliente`, `id_estado_cliente`, `id_ocupacion`, `id_estado_datos`, `id_user`, `id_trader`, `fecha_exp_doc`, `nombres`, `apellidos`, `direccion_residencia`, `telefono`, `celular`, `email`, `empresa_trabajo`, `cargo_desempenio`, `telefono_oficina`, `direccion_oficina`, `fecha_vinculacion`, `lista_clinton`, `lista_ONU`, `fecha_diligenciamiento`, `vinculo_func_agrobolsa`, `nombre_vinc_func_agrobolsa`, `persona_expuesta_publicamente`, `desc_pers_recon_public`, `cargo_publico_reciente`, `nombre_cargo_publico`, `institucion_cargo_publico`, `manejo_recursos_publicos`, `actualizacion`, `fecha_actualizacion`, `create_at`, `updated_at`) VALUES
-	(1, 5, 177, 5, 2, 3, 4, NULL, 1214, 3, 1216, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'zc', 'zxc', 'sx', 33, 333, 'asd@gmail.com', 'asdasd', 'asdasd', 3333, 'sad', '2019-09-07', 0, 0, '2019-09-11 17:17:02', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(100, 5, 4, 5, 2, 3, 4, NULL, 1217, 3, 22, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'sdf', 'sdf', 'sdf', 45, 45, 'dzs@gmail.com', 'asa', 'asa', 33333, 'asasdas', '2019-09-07', 0, 0, '2019-09-11 22:26:57', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(103, 1, 177, 5, 2, 3, 4, NULL, 31, 3, 22, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'sa', 's', 'as', 0, 2555, 'Lvb@gmail.com', 'sad', 'sas', 5555, 'sxdasd', '2019-09-07', 0, 0, '2019-09-11 22:00:53', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(999, 2, 41, 5, 2, 3, 4, NULL, 1210, 3, 1210, 3, 1, 2, 1, 1, 1, 1, 1, '2019-09-07', 'd', 'd', 'sd', 444, 444, 'abc@gmail.com', 'sdf', '1', 4444, 'dsfsd', '2019-09-07', 0, 0, '2019-09-13 23:37:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(5888, 5, 1202, 5, 2, 3, 4, NULL, 1217, 3, 1218, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'd', 'd', 'df', 44, 444, 'dddd@gmail.com', 'sdfsdf', 'sdfs', 4333, 'sdf', '2019-09-07', 0, 0, '2019-09-11 22:42:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(46456, 6, 1202, 2, 2, 3, 4, NULL, 1208, 1, 1217, 3, 1, 4, 1, 1, 1, 1, 1, '1994-06-15', 'hernan', 'lopez', 'fgsdg', NULL, 546, 'hlh@gmail.com', 'zsdfg', 'sdfsadf', 56776, 'sfdg', '2019-09-04', 0, 0, '2019-10-02 14:19:30', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(123456, 3, 1205, 3, 1, 1, 4, NULL, 1217, 3, 1219, 3, 1, 1, 1, 1, 1, 1, 1, '2000-02-22', 'Adriana', 'Bogota', 'lsdkhfj', NULL, 123456789, 'abg@gmail.com', 'dasf', 'asdfasf', 54654, 'asdfas', '2019-09-30', 0, 0, '2019-10-01 21:21:53', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(30314801, 1, 40, 1, 1, 1, 4, NULL, 107, 3, 1218, 3, 1, 1, 1, 1, 1, 1, 1, '1989-11-22', 'asdf', 'asdf', 'sadf', NULL, 0, 'sd@gmail.com', 'n/a', 'n/a', 0, 'n/a', '2019-09-20', 0, 0, '2019-10-01 21:24:00', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(80320412, 1, 39, 3, 2, 1, 4, NULL, 18, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, '2014-07-14', 'Mauricio', 'Linares', 'Carrera 100 # 80-27', 87295430, 3105896464, 'Td@gmail.com', 'n/a', 'n/a', 0, 'n/a', '2019-09-18', 0, 0, '2019-10-01 21:24:35', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-	(1038410523, 1, 629, 4, 1, 1, 1, NULL, 2, 2, 3, 3, 1, 5, 2, 13, 1, 1, 1, '2008-12-11', 'Laura', 'Giraldo', 'Cll 2d 41 a 11', 3158956, 3107964434, 'Lvs@gmail.com', 'n/a', 'n/a', 0, 'n/a', '2019-09-18', 0, 0, '2019-10-08 11:31:47', 1, 'andres', 1, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL);
+REPLACE INTO `persona_natural` (`id`, `tipo_identificacion`, `lugar_exp_doc`, `id_estado_civil`, `id_genero`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_residencia`, `id_ciudad_trabajo`, `id_tipo_vinculacion`, `id_ciudad_vinculacion`, `id_clase_vinculacion`, `id_tipo_persona`, `id_tipo_cliente`, `id_estado_cliente`, `id_ocupacion`, `id_estado_datos`, `id_user`, `id_trader`, `fecha_exp_doc`, `nombres`, `apellidos`, `direccion_residencia`, `telefono`, `celular`, `email`, `empresa_trabajo`, `cargo_desempenio`, `telefono_oficina`, `direccion_oficina`, `tipo_empresa`, `fecha_vinculacion`, `lista_clinton`, `lista_ONU`, `fecha_diligenciamiento`, `vinculo_func_agrobolsa`, `nombre_vinc_func_agrobolsa`, `persona_expuesta_publicamente`, `desc_pers_recon_public`, `cargo_publico_reciente`, `nombre_cargo_publico`, `institucion_cargo_publico`, `manejo_recursos_publicos`, `actualizacion`, `fecha_actualizacion`, `create_at`, `updated_at`) VALUES
+	(1, 5, 177, 5, 2, 3, 4, NULL, 1214, 3, 1216, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'zc', 'zxc', 'sx', 33, 333, 'asd@gmail.com', 'asdasd', 'asdasd', 3333, 'sad', NULL, '2019-09-07', 0, 0, '2019-09-11 17:17:02', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(100, 5, 4, 5, 2, 3, 4, NULL, 1217, 3, 22, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'sdf', 'sdf', 'sdf', 45, 45, 'dzs@gmail.com', 'asa', 'asa', 33333, 'asasdas', NULL, '2019-09-07', 0, 0, '2019-09-11 22:26:57', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(103, 1, 177, 5, 2, 3, 4, NULL, 31, 3, 22, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'sa', 's', 'as', 0, 2555, 'Lvb@gmail.com', 'sad', 'sas', 5555, 'sxdasd', NULL, '2019-09-07', 0, 0, '2019-09-11 22:00:53', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(999, 2, 41, 5, 2, 3, 4, NULL, 1210, 3, 1210, 3, 1, 2, 1, 1, 1, 1, 1, '2019-09-07', 'd', 'd', 'sd', 444, 444, 'abc@gmail.com', 'sdf', '1', 4444, 'dsfsd', NULL, '2019-09-07', 0, 0, '2019-09-13 23:37:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(5888, 5, 1202, 5, 2, 3, 4, NULL, 1217, 3, 1218, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'd', 'd', 'df', 44, 444, 'dddd@gmail.com', 'sdfsdf', 'sdfs', 4333, 'sdf', NULL, '2019-09-07', 0, 0, '2019-09-11 22:42:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(46456, 6, 1202, 2, 2, 3, 4, NULL, 1208, 1, 1217, 3, 1, 4, 1, 1, 1, 1, 1, '1994-06-15', 'hernan', 'lopez', 'fgsdg', NULL, 546, 'hlh@gmail.com', 'zsdfg', 'sdfsadf', 56776, 'sfdg', NULL, '2019-09-04', 0, 0, '2019-10-02 14:19:30', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(123456, 3, 1205, 3, 1, 1, 4, NULL, 1217, 3, 1219, 3, 1, 1, 1, 1, 1, 1, 1, '2000-02-22', 'Adriana', 'Bogota', 'lsdkhfj', NULL, 123456789, 'abg@gmail.com', 'dasf', 'asdfasf', 54654, 'asdfas', NULL, '2019-09-30', 0, 0, '2019-10-01 21:21:53', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(30314801, 1, 40, 1, 1, 1, 4, NULL, 107, 3, 1218, 3, 1, 1, 1, 1, 1, 1, 1, '1989-11-22', 'asdf', 'asdf', 'sadf', NULL, 0, 'sd@gmail.com', 'n/a', 'n/a', 0, 'n/a', NULL, '2019-09-20', 0, 0, '2019-10-01 21:24:00', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(80320412, 1, 39, 3, 2, 1, 4, NULL, 18, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, '2014-07-14', 'Mauricio', 'Linares', 'Carrera 100 # 80-27', 87295430, 3105896464, 'Td@gmail.com', 'n/a', 'n/a', 0, 'n/a', NULL, '2019-09-18', 0, 0, '2019-10-01 21:24:35', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(1038410523, 1, 629, 4, 1, 1, 1, NULL, 2, 2, 3, 3, 1, 5, 2, 13, 1, 1, 1, '2008-12-11', 'Laura', 'Giraldo', 'Cll 2d 41 a 11', 3158956, 3107964434, 'Lvs@gmail.com', 'n/a', 'n/a', 0, 'n/a', NULL, '2019-09-18', 0, 0, '2019-10-08 11:31:47', 1, 'andres', 1, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `persona_natural` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pn_declaracion_crs

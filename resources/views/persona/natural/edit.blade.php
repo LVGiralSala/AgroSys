@@ -343,8 +343,8 @@
     
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-group">
-                    <label for="">Cuál?</label>
-                <input type="text" class="form-control" name="" >
+                    <label for="tipo_empresa">Cuál?</label>
+                <input type="text" class="form-control" name="tipo_empresa" >
                 </div>     
             </div>
     
