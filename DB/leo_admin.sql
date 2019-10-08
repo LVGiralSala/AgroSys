@@ -11,6 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Volcando estructura de base de datos para leo_admin
+CREATE DATABASE IF NOT EXISTS `leo_admin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `leo_admin`;
+
 -- Volcando estructura para tabla leo_admin.calidad_ordenante
 CREATE TABLE IF NOT EXISTS `calidad_ordenante` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -2269,6 +2274,17 @@ REPLACE INTO `detalle_actividad` (`id`, `detalle_actividad`) VALUES
 	(7, 'Rentista de Capital');
 /*!40000 ALTER TABLE `detalle_actividad` ENABLE KEYS */;
 
+-- Volcando estructura para tabla leo_admin.documento_constitucion
+CREATE TABLE IF NOT EXISTS `documento_constitucion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `documento_contitucion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla leo_admin.documento_constitucion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `documento_constitucion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `documento_constitucion` ENABLE KEYS */;
+
 -- Volcando estructura para tabla leo_admin.entidad_bancaria
 CREATE TABLE IF NOT EXISTS `entidad_bancaria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -2340,6 +2356,17 @@ REPLACE INTO `genero` (`id`, `genero`) VALUES
 	(1, 'Femenino'),
 	(2, 'Masculino');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
+
+-- Volcando estructura para tabla leo_admin.info_tributaria
+CREATE TABLE IF NOT EXISTS `info_tributaria` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `informacion_tributaria` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla leo_admin.info_tributaria: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `info_tributaria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `info_tributaria` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.instrumento_financiero
 CREATE TABLE IF NOT EXISTS `instrumento_financiero` (
@@ -12872,7 +12899,6 @@ CREATE TABLE IF NOT EXISTS `orden_financiera` (
   KEY `fk_orden_financiera_persona_juridica_idx` (`num_identificacion`),
   KEY `fk_orden_financiera_tipo_identificacion_idx` (`id_tipo_identificacion`),
   CONSTRAINT `fk_orden_financiera_medio` FOREIGN KEY (`id_medio`) REFERENCES `medio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_orden_financiera_persona_juridica` FOREIGN KEY (`num_identificacion`) REFERENCES `persona_juridica` (`nit`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_financiera_persona_natural` FOREIGN KEY (`num_identificacion`) REFERENCES `persona_natural` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_financiera_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_financiera_tipo_identificacion` FOREIGN KEY (`id_tipo_identificacion`) REFERENCES `tipo_identificacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -12917,7 +12943,7 @@ CREATE TABLE IF NOT EXISTS `orden_fisico` (
   KEY `fk_orden_fisico_persona_juridica_idx` (`num_identificacion`),
   KEY `fk_orden_fisico_tipo_identificacion_idx` (`id_tipo_identificacion`),
   CONSTRAINT `fk_orden_fisico_medio` FOREIGN KEY (`id_medio`) REFERENCES `medio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_orden_fisico_persona_juridica` FOREIGN KEY (`num_identificacion`) REFERENCES `persona_juridica` (`nit`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_orden_fisico_persona_juridica` FOREIGN KEY (`num_identificacion`) REFERENCES `persona_juridica` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_fisico_persona_natural` FOREIGN KEY (`num_identificacion`) REFERENCES `persona_natural` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_fisico_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_orden_fisico_tipo_identificacion` FOREIGN KEY (`id_tipo_identificacion`) REFERENCES `tipo_identificacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -12930,6 +12956,17 @@ CREATE TABLE IF NOT EXISTS `orden_fisico` (
 -- Volcando datos para la tabla leo_admin.orden_fisico: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `orden_fisico` DISABLE KEYS */;
 /*!40000 ALTER TABLE `orden_fisico` ENABLE KEYS */;
+
+-- Volcando estructura para tabla leo_admin.origen_recursos
+CREATE TABLE IF NOT EXISTS `origen_recursos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `origen_recursos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla leo_admin.origen_recursos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `origen_recursos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `origen_recursos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.permisos
 CREATE TABLE IF NOT EXISTS `permisos` (
@@ -12946,59 +12983,77 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- Volcando estructura para tabla leo_admin.persona_juridica
 CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `id` bigint(20) NOT NULL,
-  `dig_verif` int(1) DEFAULT NULL,
+  `dig_ver` int(1) NOT NULL,
   `tipo_identificacion` int(11) NOT NULL,
   `id_instrumento_financiero` int(11) NOT NULL,
-  `id_tipo_empresa` int(11) DEFAULT NULL,
-  `id_ciudad_radic_doc` int(11) DEFAULT NULL,
-  `id_ciudad_oficina_princ` int(11) DEFAULT NULL,
-  `id_ciudad_notificacion` int(11) DEFAULT NULL,
-  `id_ciudad_oficina_princ` int(11) DEFAULT NULL,
-  `id_tipo_vinculacion` int(11) NOT NULL,
+  `id_tipo_empresa` int(11) NOT NULL,
+  `id_ciudad_radc_doc` int(11) NOT NULL,
+  `id_ciudad_ofic_princ` int(11) NOT NULL,
+  `id_ciudad_notificacion` int(11) NOT NULL,
   `id_ciudad_vinculacion` int(11) NOT NULL,
+  `id_tipo_vinculacion` int(11) NOT NULL,
   `id_clase_vinculacion` int(11) NOT NULL,
-  `id_tipo_persona` int(11) NOT NULL,
+  `id_rep_legales_ordenantes` int(11) NOT NULL,
   `id_codigo_CIIU` int(11) NOT NULL,
-  `id_estado_cliente` int(11) NOT NULL,
-  `id_doc_contitucion` int(11) DEFAULT NULL,
-  `id_info_trib_1` int(11) DEFAULT NULL,
+  `id_doc_contitucion` int(11) NOT NULL,
+  `id_info_trib_1` int(11) NOT NULL,
   `id_info_trib_2` int(11) DEFAULT NULL,
   `id_info_trib_3` int(11) DEFAULT NULL,
-  `id_origen_recursos` int(11) DEFAULT NULL,
+  `id_origen_recursos` int(11) NOT NULL,
+  `id_estado_cliente` int(11) NOT NULL,
   `id_estado_datos` int(11) NOT NULL,
+  `id_tipo_retenedor` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_trader` int(11) NOT NULL,
   `fecha_radic_doc` date NOT NULL,
-  `razon_social` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `razon_social` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_notificacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_oficina_princ` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono_notificacion` bigint(20) DEFAULT NULL,
-  `telefono_oficina_princ` bigint(20) DEFAULT NULL,
-  `fax` bigint(20) DEFAULT NULL,
+  `telefono_notificacion` bigint(20) NOT NULL,
+  `telefono_oficina_princ` bigint(20) NOT NULL,
+  `celular_oficina` int(11) DEFAULT NULL,
+  `fax_oficina` int(11) DEFAULT NULL,
   `pagina_web` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `referencia` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fecha_vinculacion` date NOT NULL,
+  `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lista_clinton` tinyint(1) NOT NULL,
   `lista_ONU` tinyint(1) NOT NULL,
-  `fecha_diligenciamiento` datetime NOT NULL,
-  `actualizacion` tinyint(1) DEFAULT NULL,
+  `fecha_diligenciameinto` datetime NOT NULL,
+  `fecha_vinculacion` date NOT NULL,
   `fecha_actualizacion` datetime DEFAULT NULL,
-  `create_at` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `updated_at` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `create_at` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `update_at` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `pagina_web_UNIQUE` (`pagina_web`),
+  UNIQUE KEY `web_UNIQUE` (`pagina_web`),
   KEY `fk_persona_juridica_tipo_empresa_idx` (`id_tipo_empresa`),
   KEY `fk_persona_juridica_ciudad_idx` (`id_ciudad_vinculacion`),
   KEY `fk_persona_juridica_clase_vinculacion_idx` (`id_clase_vinculacion`),
   KEY `fk_persona_juridica_tipo_vinculacion_idx` (`id_tipo_vinculacion`),
   KEY `fk_persona_juridica_tipo_retenedor_idx` (`id_tipo_retenedor`),
   KEY `fk_persona_juridica_tipo_documento_idx` (`tipo_identificacion`),
+  KEY `fk_persona_juridica_instrumento_financiero_idx` (`id_instrumento_financiero`),
+  KEY `fk_persona_juridica_ciiu_idx` (`id_codigo_CIIU`),
+  KEY `fk_persona_juridica_estado_cliente_idx` (`id_estado_cliente`),
+  KEY `fk_persona_juridica_user_idx` (`id_user`),
+  KEY `fk_persona_juridica_estado_datos_idx` (`id_estado_datos`),
+  KEY `pk_persona_natural_info_tributaria_1_idx` (`id_info_trib_1`),
+  KEY `pk_persona_natural_info_tributaria_2_idx` (`id_info_trib_2`),
+  KEY `pk_persona_natural_info_tributaria_3_idx` (`id_info_trib_3`),
+  KEY `pk_persona_juridica_origen_recursos_idx` (`id_origen_recursos`),
+  CONSTRAINT `fk_persona_juridica_ciiu` FOREIGN KEY (`id_codigo_CIIU`) REFERENCES `ciiu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_ciudad` FOREIGN KEY (`id_ciudad_vinculacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_clase_vinculacion` FOREIGN KEY (`id_clase_vinculacion`) REFERENCES `clase_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_estado_cliente` FOREIGN KEY (`id_estado_cliente`) REFERENCES `estado_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_estado_datos` FOREIGN KEY (`id_estado_datos`) REFERENCES `estado_datos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_instrumento_financiero` FOREIGN KEY (`id_instrumento_financiero`) REFERENCES `instrumento_financiero` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_tipo_empresa` FOREIGN KEY (`id_tipo_empresa`) REFERENCES `tipo_empresa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_tipo_identificacion` FOREIGN KEY (`tipo_identificacion`) REFERENCES `tipo_identificacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_tipo_retenedor` FOREIGN KEY (`id_tipo_retenedor`) REFERENCES `tipo_retenedor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_juridica_tipo_vinculacion` FOREIGN KEY (`id_tipo_vinculacion`) REFERENCES `tipo_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_persona_juridica_tipo_vinculacion` FOREIGN KEY (`id_tipo_vinculacion`) REFERENCES `tipo_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_juridica_origen_recursos` FOREIGN KEY (`id_origen_recursos`) REFERENCES `origen_recursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_natural_info_tributaria_1` FOREIGN KEY (`id_info_trib_1`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_natural_info_tributaria_2` FOREIGN KEY (`id_info_trib_2`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_natural_info_tributaria_3` FOREIGN KEY (`id_info_trib_3`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla leo_admin.persona_juridica: ~0 rows (aproximadamente)
@@ -13099,81 +13154,6 @@ REPLACE INTO `persona_natural` (`id`, `tipo_identificacion`, `lugar_exp_doc`, `i
 	(80320412, 1, 39, 3, 2, 1, 4, NULL, 18, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, '2014-07-14', 'Mauricio', 'Linares', 'Carrera 100 # 80-27', 87295430, 3105896464, 'Td@gmail.com', 'n/a', 'n/a', 0, 'n/a', '2019-09-18', 0, 0, '2019-10-01 21:24:35', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 	(1038410523, 1, 629, 4, 1, 1, 1, NULL, 2, 2, 3, 3, 1, 5, 2, 13, 1, 1, 1, '2008-12-11', 'Laura', 'Giraldo', 'Cll 2d 41 a 11', 3158956, 3107964434, 'Lvs@gmail.com', 'n/a', 'n/a', 0, 'n/a', '2019-09-18', 0, 0, '2019-10-08 11:31:47', 1, 'andres', 1, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `persona_natural` ENABLE KEYS */;
-
--- Volcando estructura para tabla leo_admin.persona_juridica
-CREATE TABLE IF NOT EXISTS `persona_juridica` (
-  `id` bigint(20) NOT NULL,
-  `dig_verif` int(1) DEFAULT NULL,
-  `tipo_identificacion` int(11) NOT NULL,
-  `id_instrumento_financiero` int(11) NOT NULL,
-  `id_tipo_empresa` int(11) DEFAULT NULL,
-  `id_ciudad_radic_doc` int(11) DEFAULT NULL,
-  `id_ciudad_oficina_princ` int(11) DEFAULT NULL,
-  `id_ciudad_notificacion` int(11) DEFAULT NULL,
-  `id_ciudad_oficina_princ` int(11) DEFAULT NULL,
-  `id_tipo_vinculacion` int(11) NOT NULL,
-  `id_ciudad_vinculacion` int(11) NOT NULL,
-  `id_clase_vinculacion` int(11) NOT NULL,
-  `id_tipo_persona` int(11) NOT NULL,
-  `id_codigo_CIIU` int(11) NOT NULL,
-  `id_estado_cliente` int(11) NOT NULL,
-  `id_doc_contitucion` int(11) DEFAULT NULL,
-  `id_info_trib_1` int(11) DEFAULT NULL,
-  `id_info_trib_2` int(11) DEFAULT NULL,
-  `id_info_trib_3` int(11) DEFAULT NULL,
-  `id_origen_recursos` int(11) DEFAULT NULL,
-  `id_estado_datos` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_trader` int(11) NOT NULL,
-  `fecha_radic_doc` date NOT NULL,
-  `razon_social` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `direccion_notificacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `direccion_oficina_princ` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono_notificacion` bigint(20) DEFAULT NULL,
-  `telefono_oficina_princ` bigint(20) DEFAULT NULL,
-  `fax` bigint(20) DEFAULT NULL,
-  `pagina_web` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cargo_desempenio` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `referencia` varchar(55) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fecha_vinculacion` date NOT NULL,
-  `lista_clinton` tinyint(1) NOT NULL,
-  `lista_ONU` tinyint(1) NOT NULL,
-  `fecha_diligenciamiento` datetime NOT NULL,
-  `actualizacion` tinyint(1) DEFAULT NULL,
-  `fecha_actualizacion` datetime DEFAULT NULL,
-  `create_at` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `updated_at` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  KEY `fk_persona_juridica_tipo_cliente_idx` (`id_tipo_persona`),
-  KEY `fk_persona_natural_tipo_vinculacion_idx` (`id_tipo_vinculacion`),
-  KEY `fk_persona_natural_clase_vinculacion_idx` (`id_clase_vinculacion`),
-  KEY `fk_persona_natural_ciudad_idx` (`id_ciudad_vinculacion`),
-  KEY `fk_persona_natural_genero_idx` (`id_genero`),
-  KEY `fk_persona_natural_estado_civil_idx` (`id_estado_civil`),
-  KEY `fk_persona_natural_tipo_identificacion_idx` (`tipo_identificacion`),
-  KEY `fk_persona_natural_tipo_cliente_idx` (`id_tipo_cliente`),
-  KEY `fk_persona_natural_user_idx` (`id_user`),
-  KEY `fk_persona_natural_estado_datos_idx` (`id_estado_datos`),
-  KEY `fk_persona_natural_estado_cliente_idx` (`id_estado_cliente`),
-  KEY `fk_persona_natural_tipo_empresa_idx` (`id_tipo_empresa`),
-  KEY `fk_persona_natural_instrumento_financiero_idx` (`id_instrumento_financiero`),
-  KEY `fk_persona_natural_ocupacion_idx` (`id_ocupacion`),
-  CONSTRAINT `fk_persona_natural_ciudad` FOREIGN KEY (`id_ciudad_vinculacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_clase_vinculacion` FOREIGN KEY (`id_clase_vinculacion`) REFERENCES `clase_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_estado_civil` FOREIGN KEY (`id_estado_civil`) REFERENCES `estado_civil` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_estado_cliente` FOREIGN KEY (`id_estado_cliente`) REFERENCES `estado_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_estado_datos` FOREIGN KEY (`id_estado_datos`) REFERENCES `estado_datos` (`id`) ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_genero` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_instrumento_financiero` FOREIGN KEY (`id_instrumento_financiero`) REFERENCES `instrumento_financiero` (`id`) ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_ocupacion` FOREIGN KEY (`id_ocupacion`) REFERENCES `ocupacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_tipo_cliente` FOREIGN KEY (`id_tipo_cliente`) REFERENCES `tipo_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_tipo_empresa` FOREIGN KEY (`id_tipo_empresa`) REFERENCES `tipo_empresa` (`id`) ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_tipo_identificacion` FOREIGN KEY (`tipo_identificacion`) REFERENCES `tipo_identificacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_tipo_persona` FOREIGN KEY (`id_tipo_persona`) REFERENCES `tipo_persona` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_tipo_vinculacion` FOREIGN KEY (`id_tipo_vinculacion`) REFERENCES `tipo_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_persona_natural_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando estructura para tabla leo_admin.pn_declaracion_crs
 CREATE TABLE IF NOT EXISTS `pn_declaracion_crs` (
