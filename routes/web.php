@@ -42,6 +42,15 @@ Route::resource('persona_natural','PersonaNaturalController');
 // Route::put('persona_natural','PersonaNaturalController@update')->name('pn_update');
 // Route::delete('persona_natural','PersonaNaturalController@destroy')->name('pn_destroy');
 
+//Persona Juridica
+Route::resource('persona_juridica','PersonaJuridicaController');
+// Route::get('persona_juridica','PersonaJuridicaController@index')->name('pj_index');
+// Route::get('persona_juridica/create','PersonaJuridicaController@create')->name('pj_create');
+// Route::post('persona_juridica','PersonaJuridicaController@store')->name('pj_store');
+// Route::get('persona_juridica/{id}','PersonaJuridicaController@edit')->name('pj_edit');
+// Route::put('persona_juridica','PersonaJuridicaController@update')->name('pj_update');
+// Route::delete('persona_juridica','PersonaJuridicaController@destroy')->name('pj_destroy');
+
 //Producto
 Route::get('producto','ProductoController@index')->name('pdto_index');
 Route::get('producto/create','ProductoController@create')->name('pdto_create');
