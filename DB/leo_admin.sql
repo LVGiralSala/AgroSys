@@ -13211,44 +13211,44 @@ REPLACE INTO `persona_natural` (`id`, `tipo_identificacion`, `lugar_exp_doc`, `i
 CREATE TABLE IF NOT EXISTS `pj_accionista` (
   `id` bigint(20) NOT NULL,
   `tipo_identificacion_accionista_1` int(11) NOT NULL,
+  `tipo_identificacion_accionista_2` int(11) DEFAULT NULL,
+  `tipo_identificacion_accionista_3` int(11) DEFAULT NULL,
+  `tipo_identificacion_accionista_4` int(11) DEFAULT NULL,
+  `tipo_identificacion_accionista_5` int(11) DEFAULT NULL,
+  `id_pais_declaracion_tributaria_accionista_1` int(11) DEFAULT NULL,
+  `id_pais_declaracion_tributaria_accionista_2` int(11) DEFAULT NULL,
+  `id_pais_declaracion_tributaria_accionista_3` int(11) DEFAULT NULL,
+  `id_pais_declaracion_tributaria_accionista_4` int(11) DEFAULT NULL,
+  `id_pais_declaracion_tributaria_accionista_5` int(11) DEFAULT NULL,
   `num_identificacion_accionista_1` bigint(20) NOT NULL,
   `nombre_completo_accionista_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `admin_recursos_publicos_accionista_1` tinyint(1) NOT NULL,
   `ejerce_poder_publico_accionista_1` tinyint(1) NOT NULL,
   `reconocimiento_publico_accionista_1` tinyint(1) NOT NULL,
-  `id_pais_declaracion_tributaria_accionista_1` int(11) DEFAULT NULL,
   `porc_participacion_accionista_1` int(11) NOT NULL,
-  `tipo_identificacion_accionista_2` int(11) DEFAULT NULL,
   `admin_recursos_publicos_accionista_2` tinyint(1) DEFAULT NULL,
   `num_identificacion_accionista_2` bigint(20) DEFAULT NULL,
   `nombre_completo_accionista_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ejerce_poder_publico_accionista_2` tinyint(1) DEFAULT NULL,
   `reconocimiento_publico_accionista_2` tinyint(1) DEFAULT NULL,
-  `id_pais_declaracion_tributaria_accionista_2` int(11) DEFAULT NULL,
   `porc_participacion_accionista_2` int(11) DEFAULT NULL,
-  `tipo_identificacion_accionista_3` int(11) DEFAULT NULL,
   `num_identificacion_accionista_3` bigint(20) DEFAULT NULL,
   `nombre_completo_accionista_3` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_recursos_publicos_accionista_3` tinyint(1) DEFAULT NULL,
   `ejerce_poder_publico_accionista_3` tinyint(1) DEFAULT NULL,
   `reconocimiento_publico_accionista_3` tinyint(1) DEFAULT NULL,
-  `id_pais_declaracion_tributaria_accionista_3` int(11) DEFAULT NULL,
   `porc_participacion_accionista_3` int(11) DEFAULT NULL,
-  `tipo_identificacion_accionista_4` int(11) DEFAULT NULL,
   `num_identificacion_accionista_4` bigint(20) DEFAULT NULL,
   `nombre_completo_accionista_4` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_recursos_publicos_accionista_4` tinyint(1) DEFAULT NULL,
   `ejerce_poder_publico_accionista_4` tinyint(1) DEFAULT NULL,
   `reconocimiento_publico_accionista4` tinyint(1) DEFAULT NULL,
-  `id_pais_declaracion_tributaria_accionista_4` int(11) DEFAULT NULL,
   `porc_participacion_accionista_4` int(11) DEFAULT NULL,
-  `tipo_identificacion_accionista_5` int(11) DEFAULT NULL,
   `num_identificacion_accionista_5` bigint(20) DEFAULT NULL,
   `nombre_completo_accionista_5` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_recursos_publicos_accionista_5` tinyint(1) DEFAULT NULL,
   `ejerce_poder_publico_accionista_5` tinyint(1) DEFAULT NULL,
   `reconocimiento_publico_accionista_5` tinyint(1) DEFAULT NULL,
-  `id_pais_declaracion_tributaria_accionista_5` int(11) DEFAULT NULL,
   `porc_participacion_accionista_5` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pj_accionista_tipo_identificacion_1_idx` (`tipo_identificacion_accionista_1`),
@@ -13270,9 +13270,9 @@ CREATE TABLE IF NOT EXISTS `pj_accionista` (
 -- Volcando estructura para tabla leo_admin.pj_declaracion_crs
 CREATE TABLE IF NOT EXISTS `pj_declaracion_crs` (
   `id` bigint(20) NOT NULL,
+  `id_pais_obligaciones_fiscales` int(11) DEFAULT NULL,
   `obligaciones_fiscales_otros_paises` tinyint(1) NOT NULL,
   `especificacion_obligaciones_fiscales` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_pais_obligaciones_fiscales` int(11) DEFAULT NULL,
   `num_identificacion_fiscal_equivalente` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -13298,14 +13298,15 @@ CREATE TABLE IF NOT EXISTS `pj_declaracion_facta` (
 CREATE TABLE IF NOT EXISTS `pj_info_financiera` (
   `id` bigint(20) NOT NULL,
   `fecha_corte` date NOT NULL,
-  `activos` int(11) NOT NULL DEFAULT '0',
-  `pasivos` int(11) NOT NULL DEFAULT '0',
-  `ingr_operac_mensuales` int(11) NOT NULL DEFAULT '0',
-  `ingr_no_operac_mensuales` int(11) NOT NULL DEFAULT '0',
-  `egre_operac_mensuales` int(11) NOT NULL DEFAULT '0',
-  `egre_no_operac_mensuales` int(11) NOT NULL DEFAULT '0',
-  `util_perd_operacional` int(11) NOT NULL DEFAULT '0',
-  `util_perd_neta` int(11) NOT NULL DEFAULT '0',
+  `activos` bigint(20) NOT NULL DEFAULT '0',
+  `pasivos` bigint(20) NOT NULL DEFAULT '0',
+  `patrimonio` bigint(20) NOT NULL DEFAULT '0',
+  `ingr_operac_mensuales` bigint(20) NOT NULL DEFAULT '0',
+  `ingr_no_operac_mensuales` bigint(20) NOT NULL DEFAULT '0',
+  `egre_operac_mensuales` bigint(20) NOT NULL DEFAULT '0',
+  `egre_no_operac_mensuales` bigint(20) NOT NULL DEFAULT '0',
+  `util_perd_operacional` bigint(20) NOT NULL DEFAULT '0',
+  `util_perd_neta` bigint(20) NOT NULL DEFAULT '0',
   `descrip_ingr_egre_no_operacionales` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -13317,23 +13318,23 @@ CREATE TABLE IF NOT EXISTS `pj_info_financiera` (
 -- Volcando estructura para tabla leo_admin.pj_operaciones_moneda_extranjera
 CREATE TABLE IF NOT EXISTS `pj_operaciones_moneda_extranjera` (
   `id` bigint(20) NOT NULL,
-  `cuentas_moneda_extranjera` tinyint(1) NOT NULL,
-  `cuenta_compensacion` tinyint(1) NOT NULL,
-  `entidad_cuenta_bancaria_me_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `num_cuenta_bancaria_me_1` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ciudad_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
-  `pais_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
   `id_tipo_moneda_me_1` int(11) DEFAULT NULL,
-  `entidad_cuenta_bancaria_me_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `num_cuenta_bancaria_me_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ciudad_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
-  `pais_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
   `id_tipo_moneda_me_2` int(11) DEFAULT NULL,
   `id_tipo_transaccion_1` int(11) DEFAULT NULL,
   `id_tipo_transaccion_2` int(11) DEFAULT NULL,
   `id_tipo_transaccion_3` int(11) DEFAULT NULL,
   `id_tipo_transaccion_4` int(11) DEFAULT NULL,
   `id_tipo_transaccion_5` int(11) DEFAULT NULL,
+  `ciudad_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
+  `pais_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
+  `ciudad_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
+  `pais_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
+  `cuentas_moneda_extranjera` tinyint(1) NOT NULL,
+  `cuenta_compensacion` tinyint(1) NOT NULL,
+  `entidad_cuenta_bancaria_me_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `num_cuenta_bancaria_me_1` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entidad_cuenta_bancaria_me_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `num_cuenta_bancaria_me_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tipo_transaccion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pj_operaciones_me_tipo_me_1_idx` (`id_tipo_moneda_me_1`),
@@ -13359,15 +13360,15 @@ CREATE TABLE IF NOT EXISTS `pj_operaciones_moneda_extranjera` (
 -- Volcando estructura para tabla leo_admin.pj_ordenante
 CREATE TABLE IF NOT EXISTS `pj_ordenante` (
   `id` bigint(20) NOT NULL,
+  `tipo_identificacion_ordenante_1` int(11) NOT NULL,
+  `tipo_identificacion_ordenante_2` int(11) DEFAULT NULL,
   `nombres_ordenante_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellidos_ordenante_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo_identificacion_ordenante_1` int(11) NOT NULL,
   `num_identificacion_ordenante_1` bigint(20) NOT NULL DEFAULT '0',
   `direccion_ordenante_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_ordenante_1` bigint(20) NOT NULL DEFAULT '0',
   `nombres_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `apellidos_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tipo_identificacion_ordenante_2` int(11) DEFAULT NULL,
   `num_identificacion_ordenante_2` bigint(20) DEFAULT '0',
   `direccion_ordenante_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telefono_ordenante_2` bigint(20) DEFAULT '0',
@@ -13385,16 +13386,16 @@ CREATE TABLE IF NOT EXISTS `pj_ordenante` (
 -- Volcando estructura para tabla leo_admin.pj_origen_fondos
 CREATE TABLE IF NOT EXISTS `pj_origen_fondos` (
   `id` bigint(20) NOT NULL,
+  `id_entidad_cuenta_bancaria_1` int(11) NOT NULL,
+  `id_entidad_cuenta_bancaria_2` int(11) DEFAULT NULL,
+  `id_tipo_cuenta_bancaria_1` int(11) NOT NULL,
+  `id_tipo_cuenta_bancaria_2` int(11) DEFAULT NULL,
   `detalle_actividad_negocio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `entidad_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_referencia_comercial` bigint(20) NOT NULL,
-  `id_entidad_cuenta_bancaria_1` int(11) NOT NULL,
   `num_cuenta_bancaria_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_tipo_cuenta_bancaria_1` int(11) NOT NULL,
-  `id_entidad_cuenta_bancaria_2` int(11) DEFAULT NULL,
   `num_cuenta_bancaria_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_tipo_cuenta_bancaria_2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pj_origen_fondos_entidad_bancaria_1_idx` (`id_entidad_cuenta_bancaria_1`),
   KEY `fk_pj_origen_fondos_entidad_bancaria_2_idx` (`id_entidad_cuenta_bancaria_2`),
@@ -13415,9 +13416,9 @@ CREATE TABLE IF NOT EXISTS `pj_representante_legal` (
   `id` bigint(20) NOT NULL,
   `tipo_identificacion` int(11) NOT NULL,
   `lugar_exp_doc` int(11) NOT NULL,
+  `lugar_nacimiento` int(11) NOT NULL DEFAULT '0',
   `fecha_nacimiento` date NOT NULL,
   `fecha_exp_doc` date NOT NULL,
-  `lugar_nacimiento` int(11) NOT NULL DEFAULT '0',
   `apellidos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nombres` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `vinculo_func_agrobolsa` tinyint(1) NOT NULL,
@@ -13494,6 +13495,9 @@ REPLACE INTO `pn_declaracion_fatca` (`id`, `obligaciones_tributarias_EEUU_US`, `
 -- Volcando estructura para tabla leo_admin.pn_info_financiera
 CREATE TABLE IF NOT EXISTS `pn_info_financiera` (
   `id` bigint(20) NOT NULL,
+  `id_detalle_actividad` int(11) NOT NULL,
+  `id_tipo_regimen` int(11) NOT NULL,
+  `id_codigo_CIIU` int(11) NOT NULL,
   `activos` decimal(20,0) NOT NULL,
   `pasivos` decimal(20,0) NOT NULL,
   `patrimonio` decimal(20,0) NOT NULL,
@@ -13503,10 +13507,7 @@ CREATE TABLE IF NOT EXISTS `pn_info_financiera` (
   `detalle_otros_ingresos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `otros_egresos` decimal(20,0) DEFAULT NULL,
   `detalle_otros_egresos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_detalle_actividad` int(11) NOT NULL,
   `explicacion_actividad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_tipo_regimen` int(11) NOT NULL,
-  `id_codigo_CIIU` int(11) NOT NULL,
   `declaracion_renta` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pn_info_financiera_tipo_regimen_idx` (`id_tipo_regimen`),
@@ -13518,41 +13519,40 @@ CREATE TABLE IF NOT EXISTS `pn_info_financiera` (
   CONSTRAINT `fk_pn_info_financiera_tipo_regimen` FOREIGN KEY (`id_tipo_regimen`) REFERENCES `tipo_regimen` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.pn_info_financiera: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.pn_info_financiera: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `pn_info_financiera` DISABLE KEYS */;
-REPLACE INTO `pn_info_financiera` (`id`, `activos`, `pasivos`, `patrimonio`, `ingresos_mensuales`, `egresos_mensuales`, `otros_ingresos`, `detalle_otros_ingresos`, `otros_egresos`, `detalle_otros_egresos`, `id_detalle_actividad`, `explicacion_actividad`, `id_tipo_regimen`, `id_codigo_CIIU`, `declaracion_renta`) VALUES
-	(999, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 7, NULL, 2, 9900, 0),
-	(5888, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 7, NULL, 2, 111, 0),
-	(46456, 500, 10, 2, 0, 0, NULL, NULL, NULL, NULL, 7, NULL, 2, 10, 0),
-	(123456, 50, 10, 2, 10, 10, NULL, NULL, NULL, NULL, 7, NULL, 2, 10, 0),
-	(30314801, 100, 10, 90, 0, 0, NULL, NULL, NULL, NULL, 7, NULL, 2, 10, 0),
-	(80320412, 10000000, 2000000, 8000000, 1000000, 800000, NULL, NULL, NULL, NULL, 7, NULL, 2, 10, 0),
-	(1038410523, 1500, 10, 1490, 10, 10, NULL, NULL, NULL, NULL, 7, NULL, 2, 10, 0);
+REPLACE INTO `pn_info_financiera` (`id`, `id_detalle_actividad`, `id_tipo_regimen`, `id_codigo_CIIU`, `activos`, `pasivos`, `patrimonio`, `ingresos_mensuales`, `egresos_mensuales`, `otros_ingresos`, `detalle_otros_ingresos`, `otros_egresos`, `detalle_otros_egresos`, `explicacion_actividad`, `declaracion_renta`) VALUES
+	(999, 7, 2, 9900, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, NULL, 0),
+	(5888, 7, 2, 111, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, NULL, 0),
+	(46456, 7, 2, 10, 500, 10, 2, 0, 0, NULL, NULL, NULL, NULL, NULL, 0),
+	(123456, 7, 2, 10, 50, 10, 2, 10, 10, NULL, NULL, NULL, NULL, NULL, 0),
+	(30314801, 7, 2, 10, 100, 10, 90, 0, 0, NULL, NULL, NULL, NULL, NULL, 0),
+	(80320412, 7, 2, 10, 10000000, 2000000, 8000000, 1000000, 800000, NULL, NULL, NULL, NULL, NULL, 0),
+	(1038410523, 7, 2, 10, 1500, 10, 1490, 10, 10, NULL, NULL, NULL, NULL, NULL, 0);
 /*!40000 ALTER TABLE `pn_info_financiera` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pn_operaciones_moneda_extranjera
 CREATE TABLE IF NOT EXISTS `pn_operaciones_moneda_extranjera` (
   `id` bigint(20) NOT NULL,
-  `cuentas_moneda_extranjera` tinyint(1) NOT NULL,
-  `cuenta_compensacion` tinyint(1) NOT NULL,
-  `entidad_cuenta_bancaria_me_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `num_cuenta_bancaria_me_1` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ciudad_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
-  `pais_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
-  `id_tipo_moneda_me_1` int(11) DEFAULT NULL,
-  `entidad_cuenta_bancaria_me_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `num_cuenta_bancaria_me_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ciudad_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
+  `pais_cuenta_bancaria_me_1` int(11) DEFAULT NULL,
   `pais_cuenta_bancaria_me_2` int(11) DEFAULT NULL,
+  `id_tipo_moneda_me_1` int(11) DEFAULT NULL,
   `id_tipo_moneda_me_2` int(11) DEFAULT NULL,
   `id_tipo_transaccion_1` int(11) DEFAULT NULL,
   `id_tipo_transaccion_2` int(11) DEFAULT NULL,
   `id_tipo_transaccion_3` int(11) DEFAULT NULL,
   `id_tipo_transaccion_4` int(11) DEFAULT NULL,
   `id_tipo_transaccion_5` int(11) DEFAULT NULL,
+  `cuentas_moneda_extranjera` tinyint(1) NOT NULL,
+  `cuenta_compensacion` tinyint(1) NOT NULL,
+  `entidad_cuenta_bancaria_me_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `num_cuenta_bancaria_me_1` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entidad_cuenta_bancaria_me_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `num_cuenta_bancaria_me_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tipo_transaccion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_operaciones_moneda_extranjera_ciudad_idx` (`ciudad_cuenta_bancaria_me_1`),
   KEY `fk_operaciones_moneda_extranjera_tipo_transaccion_1_idx` (`id_tipo_transaccion_1`),
   KEY `fk_pn_operaciones_moneda_extranjera_tipo_transaccion_2_idx` (`id_tipo_transaccion_2`),
   KEY `fk_pn_operaciones_moneda_extranjera_tipo_transaccion_3_idx` (`id_tipo_transaccion_3`),
@@ -13560,7 +13560,10 @@ CREATE TABLE IF NOT EXISTS `pn_operaciones_moneda_extranjera` (
   KEY `fk_pn_operaciones_moneda_extranjera_tipo_transaccion_5_idx` (`id_tipo_transaccion_5`),
   KEY `fk_operaciones_moneda_extranjera_tipo_moneda_1_idx` (`id_tipo_moneda_me_1`),
   KEY `fk_pn_operaciones_moneda_extranjera_tipo_moneda_2_idx` (`id_tipo_moneda_me_2`),
-  CONSTRAINT `fk_pn_operaciones_moneda_extranjera_ciudad` FOREIGN KEY (`ciudad_cuenta_bancaria_me_1`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_operaciones_moneda_extranjera_ciudad_me_1_idx` (`ciudad_cuenta_bancaria_me_1`),
+  KEY `fk_pn_operaciones_moneda_extranjera_ciudad_me_2_idx` (`ciudad_cuenta_bancaria_me_2`),
+  CONSTRAINT `fk_pn_operaciones_moneda_extranjera_ciudad_me_1` FOREIGN KEY (`ciudad_cuenta_bancaria_me_1`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pn_operaciones_moneda_extranjera_ciudad_me_2` FOREIGN KEY (`ciudad_cuenta_bancaria_me_2`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pn_operaciones_moneda_extranjera_persona_natural` FOREIGN KEY (`id`) REFERENCES `persona_natural` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pn_operaciones_moneda_extranjera_tipo_moneda_1` FOREIGN KEY (`id_tipo_moneda_me_1`) REFERENCES `tipo_moneda` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_pn_operaciones_moneda_extranjera_tipo_moneda_2` FOREIGN KEY (`id_tipo_moneda_me_2`) REFERENCES `tipo_moneda` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -13571,37 +13574,37 @@ CREATE TABLE IF NOT EXISTS `pn_operaciones_moneda_extranjera` (
   CONSTRAINT `fk_pn_operaciones_moneda_extranjera_tipo_transaccion_5` FOREIGN KEY (`id_tipo_transaccion_5`) REFERENCES `tipo_transaccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.pn_operaciones_moneda_extranjera: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.pn_operaciones_moneda_extranjera: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `pn_operaciones_moneda_extranjera` DISABLE KEYS */;
-REPLACE INTO `pn_operaciones_moneda_extranjera` (`id`, `cuentas_moneda_extranjera`, `cuenta_compensacion`, `entidad_cuenta_bancaria_me_1`, `num_cuenta_bancaria_me_1`, `ciudad_cuenta_bancaria_me_1`, `pais_cuenta_bancaria_me_1`, `id_tipo_moneda_me_1`, `entidad_cuenta_bancaria_me_2`, `num_cuenta_bancaria_me_2`, `ciudad_cuenta_bancaria_me_2`, `pais_cuenta_bancaria_me_2`, `id_tipo_moneda_me_2`, `id_tipo_transaccion_1`, `id_tipo_transaccion_2`, `id_tipo_transaccion_3`, `id_tipo_transaccion_4`, `id_tipo_transaccion_5`, `tipo_transaccion`) VALUES
-	(999, 0, 0, 'fgs', '52', 6, 5, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(5888, 0, 0, 'xfcgv', '4545', 44, 44, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(46456, 0, 0, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(123456, 0, 0, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(30314801, 0, 0, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(80320412, 0, 0, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL),
-	(1038410523, 0, 0, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL);
+REPLACE INTO `pn_operaciones_moneda_extranjera` (`id`, `ciudad_cuenta_bancaria_me_1`, `ciudad_cuenta_bancaria_me_2`, `pais_cuenta_bancaria_me_1`, `pais_cuenta_bancaria_me_2`, `id_tipo_moneda_me_1`, `id_tipo_moneda_me_2`, `id_tipo_transaccion_1`, `id_tipo_transaccion_2`, `id_tipo_transaccion_3`, `id_tipo_transaccion_4`, `id_tipo_transaccion_5`, `cuentas_moneda_extranjera`, `cuenta_compensacion`, `entidad_cuenta_bancaria_me_1`, `num_cuenta_bancaria_me_1`, `entidad_cuenta_bancaria_me_2`, `num_cuenta_bancaria_me_2`, `tipo_transaccion`) VALUES
+	(999, 6, NULL, 5, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, 'fgs', '52', NULL, NULL, NULL),
+	(5888, 44, NULL, 44, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, 'xfcgv', '4545', NULL, NULL, NULL),
+	(46456, NULL, NULL, NULL, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL),
+	(123456, NULL, NULL, NULL, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL),
+	(30314801, NULL, NULL, NULL, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL),
+	(80320412, NULL, NULL, NULL, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL),
+	(1038410523, NULL, NULL, NULL, NULL, 1, NULL, 6, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `pn_operaciones_moneda_extranjera` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pn_ordenante
 CREATE TABLE IF NOT EXISTS `pn_ordenante` (
   `id` bigint(20) NOT NULL,
+  `tipo_identificacion_ordenante_1` int(11) NOT NULL,
+  `tipo_identificacion_ordenante_2` int(11) DEFAULT NULL,
+  `id_calidad_ordenante_1` int(11) DEFAULT NULL,
+  `id_calidad_ordenante_2` int(11) DEFAULT NULL,
   `nombres_ordenante_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellidos_ordenante_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo_identificacion_ordenante_1` int(11) NOT NULL,
   `num_identificacion_ordenante_1` bigint(20) NOT NULL DEFAULT '0',
   `direccion_ordenante_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_ordenante_1` bigint(20) NOT NULL,
   `parentesco_ordenante_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_calidad_ordenante_1` int(11) DEFAULT NULL,
-  `tipo_identificacion_ordenante_2` int(11) DEFAULT NULL,
   `num_identificacion_ordenante_2` int(11) DEFAULT NULL,
   `nombres_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `apellidos_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `direccion_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `telefono_ordenante_2` bigint(20) DEFAULT NULL,
   `parentesco_ordenante_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_calidad_ordenante_2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pn_ordenante_calidad_ordenate_idx` (`id_calidad_ordenante_1`),
   KEY `fk_pn_ordenante_persona_natural_idx` (`id`),
@@ -13617,30 +13620,30 @@ CREATE TABLE IF NOT EXISTS `pn_ordenante` (
 
 -- Volcando datos para la tabla leo_admin.pn_ordenante: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `pn_ordenante` DISABLE KEYS */;
-REPLACE INTO `pn_ordenante` (`id`, `nombres_ordenante_1`, `apellidos_ordenante_1`, `tipo_identificacion_ordenante_1`, `num_identificacion_ordenante_1`, `direccion_ordenante_1`, `telefono_ordenante_1`, `parentesco_ordenante_1`, `id_calidad_ordenante_1`, `tipo_identificacion_ordenante_2`, `num_identificacion_ordenante_2`, `nombres_ordenante_2`, `apellidos_ordenante_2`, `direccion_ordenante_2`, `telefono_ordenante_2`, `parentesco_ordenante_2`, `id_calidad_ordenante_2`) VALUES
-	(999, 'fg', 'sdfg', 5, 99, 'dxzf', 555, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-	(5888, 'vbn', 'vhm', 5, 5547, 'vbh', 24124, 'vhj', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2),
-	(46456, 'fghdfg', 'dgfhdgfh', 6, 54546, 'gfhjfgj', 4564, 'dfghdfgh', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(123456, 'fghdfgh', 'dghdgh', 6, 456456, 'dghfdgh', 456456, 'dghdhg', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(30314801, 'aswd', 'asd', 6, 0, 'asd', 0, 'asd', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(80320412, 'Patricia', 'Linares', 1, 123456, 'Calle 25 # 37 - 85', 8504545, 'Hermana', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(1038410523, 'Andres', 'Linares', 1, 80213850, 'afsgfg', 3192614057, 'esposo', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+REPLACE INTO `pn_ordenante` (`id`, `tipo_identificacion_ordenante_1`, `tipo_identificacion_ordenante_2`, `id_calidad_ordenante_1`, `id_calidad_ordenante_2`, `nombres_ordenante_1`, `apellidos_ordenante_1`, `num_identificacion_ordenante_1`, `direccion_ordenante_1`, `telefono_ordenante_1`, `parentesco_ordenante_1`, `num_identificacion_ordenante_2`, `nombres_ordenante_2`, `apellidos_ordenante_2`, `direccion_ordenante_2`, `telefono_ordenante_2`, `parentesco_ordenante_2`) VALUES
+	(999, 5, NULL, NULL, 1, 'fg', 'sdfg', 99, 'dxzf', 555, '1', NULL, NULL, NULL, NULL, NULL, NULL),
+	(5888, 5, NULL, 2, 2, 'vbn', 'vhm', 5547, 'vbh', 24124, 'vhj', NULL, NULL, NULL, NULL, NULL, NULL),
+	(46456, 6, NULL, 2, NULL, 'fghdfg', 'dgfhdgfh', 54546, 'gfhjfgj', 4564, 'dfghdfgh', NULL, NULL, NULL, NULL, NULL, NULL),
+	(123456, 6, NULL, 2, NULL, 'fghdfgh', 'dghdgh', 456456, 'dghfdgh', 456456, 'dghdhg', NULL, NULL, NULL, NULL, NULL, NULL),
+	(30314801, 6, NULL, 2, NULL, 'aswd', 'asd', 0, 'asd', 0, 'asd', NULL, NULL, NULL, NULL, NULL, NULL),
+	(80320412, 1, NULL, 2, NULL, 'Patricia', 'Linares', 123456, 'Calle 25 # 37 - 85', 8504545, 'Hermana', NULL, NULL, NULL, NULL, NULL, NULL),
+	(1038410523, 1, NULL, 2, NULL, 'Andres', 'Linares', 80213850, 'afsgfg', 3192614057, 'esposo', NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `pn_ordenante` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pn_origen_fondos
 CREATE TABLE IF NOT EXISTS `pn_origen_fondos` (
   `id` bigint(20) NOT NULL,
   `id_tipo_fuente_fondos` int(11) NOT NULL,
+  `id_entidad_cuenta_bancaria_1` int(11) NOT NULL DEFAULT '0',
+  `id_entidad_cuenta_bancaria_2` int(11) DEFAULT NULL,
+  `id_tipo_cuenta_bancaria_1` int(11) NOT NULL,
+  `id_tipo_cuenta_bancaria_2` int(11) DEFAULT NULL,
   `tipo_fuente_fondos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `entidad_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_referencia_comercial` bigint(20) NOT NULL,
-  `id_entidad_cuenta_bancaria_1` int(11) NOT NULL DEFAULT '0',
   `num_cuenta_bancaria_1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_tipo_cuenta_bancaria_1` int(11) NOT NULL,
-  `id_entidad_cuenta_bancaria_2` int(11) DEFAULT NULL,
   `num_cuenta_bancaria_2` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_tipo_cuenta_bancaria_2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_origen_fondos_tipo_fuente_fondos_idx` (`id_tipo_fuente_fondos`),
   KEY `fk_origen_fondos_tipo_cuenta_bancaria_1_idx` (`id_tipo_cuenta_bancaria_1`),
@@ -13657,14 +13660,14 @@ CREATE TABLE IF NOT EXISTS `pn_origen_fondos` (
 
 -- Volcando datos para la tabla leo_admin.pn_origen_fondos: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `pn_origen_fondos` DISABLE KEYS */;
-REPLACE INTO `pn_origen_fondos` (`id`, `id_tipo_fuente_fondos`, `tipo_fuente_fondos`, `entidad_referencia_comercial`, `direccion_referencia_comercial`, `telefono_referencia_comercial`, `id_entidad_cuenta_bancaria_1`, `num_cuenta_bancaria_1`, `id_tipo_cuenta_bancaria_1`, `id_entidad_cuenta_bancaria_2`, `num_cuenta_bancaria_2`, `id_tipo_cuenta_bancaria_2`) VALUES
-	(999, 9, NULL, 'hgdgh', 'dfghfgh', 6666, 1, '6666', 3, 1, NULL, 3),
-	(5888, 9, NULL, 'vhcbn', 'cbn', 555, 1, '6666', 3, 1, '666', 3),
-	(46456, 9, NULL, 'sdfgsdfg', 'sdfgsdfg', 45645, 1, '456456', 3, NULL, NULL, NULL),
-	(123456, 9, NULL, 'fgfsdgsf', 'sgsdfgs', 1111, 1, '52552', 3, NULL, NULL, NULL),
-	(30314801, 9, NULL, 'n/a', 'n/a', 0, 1, '123', 3, NULL, NULL, NULL),
-	(80320412, 1, NULL, 'Agosys', 'Transversal 87 # 47 - 09', 5804545, 1, '12345678', 3, NULL, NULL, NULL),
-	(1038410523, 9, NULL, 'n/a', 'n/a', 0, 1, '000', 3, NULL, NULL, NULL);
+REPLACE INTO `pn_origen_fondos` (`id`, `id_tipo_fuente_fondos`, `id_entidad_cuenta_bancaria_1`, `id_entidad_cuenta_bancaria_2`, `id_tipo_cuenta_bancaria_1`, `id_tipo_cuenta_bancaria_2`, `tipo_fuente_fondos`, `entidad_referencia_comercial`, `direccion_referencia_comercial`, `telefono_referencia_comercial`, `num_cuenta_bancaria_1`, `num_cuenta_bancaria_2`) VALUES
+	(999, 9, 1, 1, 3, 3, NULL, 'hgdgh', 'dfghfgh', 6666, '6666', NULL),
+	(5888, 9, 1, 1, 3, 3, NULL, 'vhcbn', 'cbn', 555, '6666', '666'),
+	(46456, 9, 1, NULL, 3, NULL, NULL, 'sdfgsdfg', 'sdfgsdfg', 45645, '456456', NULL),
+	(123456, 9, 1, NULL, 3, NULL, NULL, 'fgfsdgsf', 'sgsdfgs', 1111, '52552', NULL),
+	(30314801, 9, 1, NULL, 3, NULL, NULL, 'n/a', 'n/a', 0, '123', NULL),
+	(80320412, 1, 1, NULL, 3, NULL, NULL, 'Agosys', 'Transversal 87 # 47 - 09', 5804545, '12345678', NULL),
+	(1038410523, 9, 1, NULL, 3, NULL, NULL, 'n/a', 'n/a', 0, '000', NULL);
 /*!40000 ALTER TABLE `pn_origen_fondos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.producto
