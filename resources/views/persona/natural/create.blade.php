@@ -65,7 +65,7 @@
       
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
-                <label for="num_identificacion">Número Identificación</label>
+                <label for="num_identificacion">N° Identificación</label>
                 <input type="text" class="form-control" name="num_identificacion" required>
             </div>     
           </div>
@@ -640,7 +640,7 @@
         <!-- 5 -->
         <div class="row">
           
-          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-5 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
                 <label for="id_entidad_cuenta_bancaria_1">Entidad Bancaria</label>
                 <select name="id_entidad_cuenta_bancaria_1" class="form-control" required>

@@ -97,7 +97,7 @@
             
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
               <div class="form-group">
-                  <label for="num_identificacion">Número Identificación</label>
+                  <label for="num_identificacion">N° Identificación</label>
                   <input type="Integer" class="form-control" name="num_identificacion" required value="{{$persona_natural->id}}" readonly>
               </div>     
             </div>
@@ -105,7 +105,7 @@
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                   <div class="form-group">
                       <label for="lugar_exp_doc">Lugar Expedición</label>
-                      <select name="lugar_exp_doc" class="form-control" required readonly>
+                      <select name="lugar_exp_doc" class="form-control" required readonly disabled>
                         @foreach($ciudades as $ciu)
                           <option <?php if($ciu->id==$persona_natural->lugar_exp_doc) echo 'selected'?> value="{{$ciu->id}}">{{$ciu->nombre_ciudad}}</option>
                         @endforeach
@@ -128,7 +128,7 @@
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-group">
                   <label for="id_genero">Género</label>
-                    <select name="id_genero" class="form-control" required readonly>
+                    <select name="id_genero" class="form-control" required readonly disabled>
                       @foreach($generos as $gen)
                       <option <?php if($gen->id==$persona_natural->id_genero) echo 'selected'?> value="{{$gen->id}}">{{$gen->genero}}</option>
                       @endforeach
@@ -242,7 +242,7 @@
             <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                 <div class="form-group">
                   <label for="id_ciudad_vinculacion">Ciudad Vinculación</label>
-                  <select name="id_ciudad_vinculacion" class="form-control" required readonly>
+                  <select name="id_ciudad_vinculacion" class="form-control" required readonly disabled>
                     @foreach($ciudades as $ciu)
                       <option <?php if($ciu->id==$persona_natural->id_ciudad_vinculacion) echo 'selected'?>
                         value="{{$ciu->id}}">{{$ciu->nombre_ciudad}}</option>
@@ -667,7 +667,7 @@
                 <label for="id_tipo_fuente_fondos">Fuente de Fondos</label>
                 <select name="id_tipo_fuente_fondos" class="form-control" required>
                   @foreach($tipos_fuentes_fondos as $tp_fon)
-                    <option <?php if($tp_fon->id == $origen_fondos->id_tipo_fuente_fondos) echo 'selected'?>
+                    <option <?php if($tp_fon->id==$origen_fondos->id_tipo_fuente_fondos) echo 'selected'?>
                     value="{{$tp_fon->id}}" >{{$tp_fon->tipo_fuente_fondos}}</option>
                   @endforeach
                 </select>
@@ -704,7 +704,7 @@
       <!-- 5 -->
       <div class="row">
         
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-lg-5 col-md-3 col-sm-3 col-xs-12">
           <div class="form-group">
               <label for="id_entidad_cuenta_bancaria_1">Entidad Bancaria</label>
               <select name="id_entidad_cuenta_bancaria_1" class="form-control" required>
