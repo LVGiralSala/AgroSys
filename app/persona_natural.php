@@ -27,6 +27,10 @@ protected $fillable = [
         'id_tipo_cliente', 
         'id_ocupacion',
         'id_tipo_empresa',
+        'id_estado_cliente',
+        'id_estado_datos', 
+        'id_user',
+        'id_trader',    
         'fecha_diligenciamiento',	
         'fecha_exp_doc',
         'nombres',		
@@ -49,12 +53,8 @@ protected $fillable = [
         'nombre_cargo_publico',
         'institucion_cargo_publico',
         'manejo_recursos_publicos',
-        'id_estado_cliente',
-        'id_estado_datos', 
         'observacion',
         'fecha_actualizacion', 
-        'id_user',
-        'id_trader',    
         
         /**
          * Info Básica

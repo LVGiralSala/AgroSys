@@ -12,15 +12,15 @@ class pn_origen_fondos extends Model
 
     protected $fillable = [
         'id_tipo_fuente_fondos',
+        'id_entidad_cuenta_bancaria_1',
+        'id_entidad_cuenta_bancaria_2',
+        'id_tipo_cuenta_bancaria_2',
+        'id_tipo_cuenta_bancaria_2',
         'entidad_referencia_comercial',
         'direccion_referencia_comercial',
         'telefono_referencia_comercial',
-        'id_entidad_cuenta_bancaria_1',
         'num_cuenta_bancaria_1',
-        'id_tipo_cuenta_bancaria_2',
-        'id_entidad_cuenta_bancaria_2',
         'num_cuenta_bancaria_2',
-        'id_tipo_cuenta_bancaria_2',
         
         /**
          * Origen Fondos

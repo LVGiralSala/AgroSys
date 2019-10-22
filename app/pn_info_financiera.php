@@ -11,6 +11,9 @@ class pn_info_financiera extends Model
     public $timestamps=false;
     
     protected $fillable = [
+        'id_detalle_actividad',
+        'id_tipo_regimen',
+        'id_codigo_CIIU',
         'activos',
         'pasivos',
         'patrimonio',
@@ -20,10 +23,7 @@ class pn_info_financiera extends Model
         'detalle_otros_ingresos',
         'otros_egresos',
         'detalle_otros_egresos',
-        'id_detalle_actividad',
         'explicacion_actividad',
-        'id_tipo_regimen',
-        'id_codigo_CIIU',
         'declaracion_renta',
         
         /**
