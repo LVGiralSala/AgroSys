@@ -20,27 +20,18 @@ class PersonaJuridicaController extends Controller
         if($request)
         {
             $query=trim($request->get('searchText'));
-            $personas_naturales=DB::table('persona_natural as pn')
-            ->join('tipo_identificacion as ti', 'pn.tipo_identificacion', '=','ti.id')
-            ->join('genero as g', 'pn.id_genero', '=','g.id')
-            ->join('estado_civil as ec', 'pn.id_estado_civil', '=','ec.id')
-            ->join('tipo_persona as tp', 'pn.id_tipo_persona', '=','tp.id')
-            ->join('clase_vinculacion as cv', 'pn.id_clase_vinculacion', '=','cv.id')
-            ->join('tipo_vinculacion as tv', 'pn.id_tipo_vinculacion', '=','tv.id')
-            ->join('tipo_cliente as tc', 'pn.id_tipo_cliente', '=','tc.id')
-            ->join('tipo_empresa as te', 'pn.id_tipo_empresa', '=','te.id')
-            ->join('instrumento_financiero as if', 'pn.id_instrumento_financiero', '=','if.id')
-            ->join('ocupacion as ocu', 'pn.id_ocupacion','=','ocu.id')
-            ->select('pn.id','ti.sigla','pn.nombres',
-                     'pn.apellidos','g.genero as id_genero','ec.estado_civil as id_estado_civil',
-                     'tp.tipo_persona as id_tipo_persona','pn.direccion_residencia','pn.celular',
-                     'pn.email','pn.lista_clinton','pn.lista_ONU','pn.persona_expuesta_publicamente',
+            $personas_juridicas=DB::table('persona_juridica as pj')
+            ->join('tipo_identificacion as ti', 'pj.tipo_identificacion', '=','ti.id')
+            ->join('instrumento_financiero as if', 'pj.id_instrumento_financiero', '=','if.id')
+            ->join('tipo_vinculacion as tv', 'pj.id_tipo_vinculacion', '=','tv.id')
+            ->join('clase_vinculacion as cv', 'pj.id_clase_vinculacion', '=','cv.id')
+            ->select('pj.id','ti.sigla','pj.razon_social','pj.lista_clinton','pj.lista_ONU',
                      'cv.clase_vinculacion as id_clase_vinculacion','tv.tipo_vinculacion as id_tipo_vinculacion',
-                     'tc.tipo_cliente as id_tipo_cliente','te.tipo_empresa as id_tipo_empresa',
-                     'if.instrumento_financiero as id_instrumento_financiero','ocu.ocupacion as id_ocupacion')
-            ->where('pn.id','LIKE','%'.$query.'%')->get();
+                     'if.instrumento_financiero as id_instrumento_financiero')
+            ->where('pj.id','LIKE','%'.$query.'%')->get();
 
-            return view('persona.natural.index',["personas_naturales"=>$personas_naturales, "searchText"=>$query]);
+            return view('persona.juridica.index',["personas_juridica"=>$personas_juridicas]);
+            // , "searchText"=>$query
         }
     }
 
@@ -51,7 +42,47 @@ class PersonaJuridicaController extends Controller
      */
     public function create()
     {
-        //
+        $persona_juridica=DB::table('persona_juridica')->get();
+        $tipo_identificacion=DB::table('tipo_identificacion')->get();
+        $instrumento_financiero=DB::table('instrumento_financiero')->get();
+        $tipo_empresa=DB::table('tipo_empresa')->get();
+        $ciudad=DB::table('ciudad')->get();
+        $tipo_vinculacion=DB::table('tipo_vinculacion')->get();
+        $clase_vinculacion=DB::table('clase_vinculacion')->get();
+        $ciiu=DB::table('ciiu')->get();
+        $documento_constitucion=DB::table('documento_constitucion')->get();
+        $info_tributaria=DB::table('info_tributaria')->get();
+        $origen_recursos=DB::table('origen_recursos')->get();
+        $estado_cliente=DB::table('estado_cliente')->get();
+        $estado_datos=DB::table('estado_datos')->get();
+        $tipo_retenedor=DB::table('tipo_retenedor')->get();
+        $tipo_moneda=DB::table('tipo_moneda')->get();
+        $tipo_transaccion=DB::table('tipo_transaccion')->get();
+        $entidad_bancaria=DB::table('entidad_bancaria')->get();
+        $tipo_cuenta_bancaria=DB::table('tipo_cuenta_bancaria')->get();
+        $usuarios=DB::table('users')->get();
+
+        return view('persona.juridica.create',[
+                    "persona_juridica"=>$persona_juridica,
+                    "tipo_identificaciones"=>$tipo_identificacion,
+                    "instrumento_financieros"=>$instrumento_financiero,
+                    "tipos_empresas"=>$tipo_empresa,
+                    "ciudades"=>$ciudad,
+                    "tipos_vinculaciones"=>$tipo_vinculacion,
+                    "clases_vinculaciones"=>$clase_vinculacion,
+                    "codigos_ciiu"=>$ciiu,
+                    "documentos_constitucion"=>$documento_constitucion,
+                    "info_tributarias"=>$info_tributaria,
+                    "origenes_recursos"=>$origen_recursos,
+                    "estados_clientes"=>$estado_cliente,
+                    "estados_datos"=>$estado_datos,
+                    "tipos_retenedores"=>$tipo_retenedor,
+                    "tipos_monedas"=>$tipo_moneda,
+                    "tipos_transacciones"=>$tipo_transaccion,
+                    "entidades_bancarias"=>$entidad_bancaria,
+                    "tipos_cuentas_bancarias"=>$tipo_cuenta_bancaria,
+                    "usuarios"=>$usuarios,
+            ]);
     }
 
     /**

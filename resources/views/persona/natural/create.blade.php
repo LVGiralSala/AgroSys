@@ -45,7 +45,7 @@
       <div id="tab1" class="container tab-pane active"><br>
         <!-- 1 -->
         <div class="row">
-          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
               <div class="form-group">
                 <label for="tipo_identificacion">T.I</label>
                 <select name="tipo_identificacion" class="form-control" required>
@@ -63,7 +63,7 @@
             </div>
           </div>
       
-          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
             <div class="form-group">
                 <label for="num_identificacion">N° Identificación</label>
                 <input type="text" class="form-control" name="num_identificacion" required>

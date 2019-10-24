@@ -36,7 +36,7 @@
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{url('persona_natural') }}">NATURALES</a>
-              <a class="collapse-item" href="cards.html">JURÍDICOS</a>
+              <a class="collapse-item" href="{{url('persona_juridica') }}">JURÍDICOS</a>
             </div>
           </div>
         </li>
