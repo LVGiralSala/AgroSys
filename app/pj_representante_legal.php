@@ -14,6 +14,7 @@ class pj_representante_legal extends Model
         'tipo_identificacion',
         'lugar_exp_doc',
         'lugar_nacimiento',
+        'ciudad_residencia',
         'fecha_nacimiento',
         'fecha_exp_doc',
         'apellidos',
@@ -49,6 +50,11 @@ class pj_representante_legal extends Model
     public function ciudad_exp_doc()
     {
         return $this->belongsTo(ciudad::class,'lugar_exp_doc');
+    }
+
+    public function ciudad_residencia()
+    {
+        return $this->belongsTo(ciudad::class,'ciudad_residencia');
     }
 
     public function ciudad_nacimiento()

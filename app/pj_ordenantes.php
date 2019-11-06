@@ -18,13 +18,11 @@ class pj_ordenantes extends Model
         'num_identificacion_ordenante_1',
         'direccion_ordenante_1',
         'telefono_ordenante_1',
-        'parentesco_ordenante_1',
         'nombres_ordenante_2',
         'apellidos_ordenante_2',
         'num_identificacion_ordenante_2',
         'direccion_ordenante_2',
         'telefono_ordenante_2',
-        'parentesco_ordenante_2',
         /**
          * Ordenantes
          */

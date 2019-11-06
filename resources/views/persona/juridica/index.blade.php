@@ -29,21 +29,17 @@
             <th style="width: 105px">Actividad Económica</th>
             <th style="width: 39px">Acción</th>
            </thead> 
-            {{-- @foreach ($personas_juridicas as $item) 
+            @foreach ($personas_juridicas as $item) 
                    <tr>
-                     <td>{{ $item->sigla}}</td>
-                     <td>{{ $item->id }}</td>
-                     <td>{{ $item->nombres }}</td>
-                     <td>{{ $item->apellidos }}</td> 
-                     <td>{{ $item->direccion_residencia }}</td>
-                     <td>{{ $item->celular }}</td>
-                     <td>{{ $item->email }}</td>
-                     <td>{{ $item->persona_expuesta_publicamente }}</td>
+                     <td>{{ $item->id }} - {{ $item->dig_ver}}</td>
+                     <td>{{ $item->razon_social }}</td>
+                     <td>{{ $item->pagina_web }}</td> 
+                     <td>{{ $item->id_codigo_CIIU }}</td>
                      <td> 
                       <a href="{{URL::action('PersonaJuridicaController@edit',$item->id)}}"><button class="btn-success" style="background-color: #447161; border:0">Editar</button></a>
                      </td>
                    </tr>
-            @endforeach  --}}
+            @endforeach 
           </table>
             
         </div>

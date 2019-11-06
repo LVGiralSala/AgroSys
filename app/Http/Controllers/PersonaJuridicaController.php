@@ -25,12 +25,13 @@ class PersonaJuridicaController extends Controller
             ->join('instrumento_financiero as if', 'pj.id_instrumento_financiero', '=','if.id')
             ->join('tipo_vinculacion as tv', 'pj.id_tipo_vinculacion', '=','tv.id')
             ->join('clase_vinculacion as cv', 'pj.id_clase_vinculacion', '=','cv.id')
-            ->select('pj.id','ti.sigla','pj.razon_social','pj.lista_clinton','pj.lista_ONU',
+            ->join('ciiu as ciiu', 'pj.id_codigo_CIIU', '=','ciiu.id')
+            ->select('pj.id','ti.sigla','pj.dig_ver','pj.razon_social','pj.pagina_web','pj.lista_clinton','pj.lista_ONU',
                      'cv.clase_vinculacion as id_clase_vinculacion','tv.tipo_vinculacion as id_tipo_vinculacion',
-                     'if.instrumento_financiero as id_instrumento_financiero')
+                     'if.instrumento_financiero as id_instrumento_financiero', 'pj.id_codigo_CIIU')
             ->where('pj.id','LIKE','%'.$query.'%')->get();
 
-            return view('persona.juridica.index',["personas_juridica"=>$personas_juridicas]);
+            return view('persona.juridica.index',["personas_juridicas"=>$personas_juridicas]);
             // , "searchText"=>$query
         }
     }
@@ -51,6 +52,7 @@ class PersonaJuridicaController extends Controller
         $clase_vinculacion=DB::table('clase_vinculacion')->get();
         $ciiu=DB::table('ciiu')->get();
         $documento_constitucion=DB::table('documento_constitucion')->get();
+        $detalle_actividad=DB::table('detalle_actividad')->get();
         $info_tributaria=DB::table('info_tributaria')->get();
         $origen_recursos=DB::table('origen_recursos')->get();
         $estado_cliente=DB::table('estado_cliente')->get();
@@ -64,13 +66,14 @@ class PersonaJuridicaController extends Controller
 
         return view('persona.juridica.create',[
                     "persona_juridica"=>$persona_juridica,
-                    "tipo_identificaciones"=>$tipo_identificacion,
+                    "tipos_identificaciones"=>$tipo_identificacion,
                     "instrumento_financieros"=>$instrumento_financiero,
                     "tipos_empresas"=>$tipo_empresa,
                     "ciudades"=>$ciudad,
                     "tipos_vinculaciones"=>$tipo_vinculacion,
                     "clases_vinculaciones"=>$clase_vinculacion,
                     "codigos_ciiu"=>$ciiu,
+                    "detalles_actividades"=>$detalle_actividad,
                     "documentos_constitucion"=>$documento_constitucion,
                     "info_tributarias"=>$info_tributaria,
                     "origenes_recursos"=>$origen_recursos,

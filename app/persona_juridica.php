@@ -16,13 +16,15 @@ class persona_juridica extends Model
         'id_instrumento_financiero',
         'id_tipo_empresa',
         'id_ciudad_radc_doc',
+        'id_depto_ofic_princ',
         'id_ciudad_ofic_princ',
+        'id_depto_notificacion',
         'id_ciudad_notificacion',
         'id_ciudad_vinculacion',
         'id_tipo_vinculacion',
         'id_clase_vinculacion',
         'id_codigo_CIIU',
-        'id_doc_contitucion',
+        'id_doc_constitucion',
         'id_info_trib_1',
         'id_info_trib_2',
         'id_info_trib_3',
@@ -42,6 +44,7 @@ class persona_juridica extends Model
         'fax_oficina',
         'pagina_web',
         'doc_constitucion',
+        'num_doc_constitucion',
         'origen_recursos',
         'tipo_empresa',
         'referencia',
@@ -90,7 +93,7 @@ class persona_juridica extends Model
     }  
     public function documentoConstitucion()
     {
-        return $this->belongsTo(documento_constitucion::class,'id_doc_contitucion');
+        return $this->belongsTo(documento_constitucion::class,'id_doc_constitucion');
     }  
     public function estadoCliente()
     {
