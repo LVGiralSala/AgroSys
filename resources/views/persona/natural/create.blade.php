@@ -47,7 +47,7 @@
         <div class="row">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
               <div class="form-group">
-                <label for="tipo_identificacion">T.I</label>
+                <label for="tipo_identificacion">T. Identificación</label>
                 <select name="tipo_identificacion" class="form-control" required>
                   @foreach($tipos_identificaciones as $tip_ident)
                       {{-- @if($tip_ident == "1") --}}
@@ -132,25 +132,62 @@
                   <input type="text" class="form-control" name="apellidos" required>
               </div>     
           </div>
-      
-          <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
-            <div class="form-group">
-                <label for="direccion_residencia">Dirección</label>
-                <input type="text" class="form-control" name="direccion_residencia" required>
-            </div>     
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+              <div class="form-group">
+                <label for="id_estado_civil">Fecha Nacimiento</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                      <input class="form-control datetimepicker" name="fecha_exp_doc"  type="text" required>
+                  </div>
+            </div>
           </div>
-    
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+              <div class="form-group">
+                <label for="id_estado_civil">Ciudad Nacimiento</label>
+                <select name="id_estado_civil" class="form-control" required>
+                  @foreach($estados_civiles as $item)
+                    <option value="{{$item->id}}" selected>{{$item->estado_civil}}</option>
+                  @endforeach
+                </select>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+              <div class="form-group">
+                <label for="id_estado_civil">Nacionalidad</label>
+                <select name="id_estado_civil" class="form-control" required>
+                  @foreach($estados_civiles as $item)
+                    <option value="{{$item->id}}" selected>{{$item->estado_civil}}</option>
+                  @endforeach
+                </select>
+            </div>
+          </div>
+      
+          
+        </div>
+        <!-- 2 -->
+
+        <!-- 3 -->
+        <div class="row">
+
+          <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+              <div class="form-group">
+                  <label for="direccion_residencia">Dirección</label>
+                  <input type="text" class="form-control" name="direccion_residencia" required>
+              </div>     
+          </div>
+        
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
               <div class="form-group">
                   <label for="telefono">Teléfono</label>
                   <input type="text" class="form-control" name="telefono">
               </div>     
           </div>
-        </div>
-        <!-- 2 -->
 
-        <!-- 3 -->
-        <div class="row">
           <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
               <div class="form-group">
                   <label for="celular">Celular</label>
@@ -377,7 +414,7 @@
 
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="form-group">
-                <label for="desc_pers_recon_public">Explique</label>
+                <label for="desc_pers_recon_public">Especifique</label>
                 <input type="text" class="form-control" name="desc_pers_recon_public">
             </div>     
           </div>
@@ -561,7 +598,7 @@
             </div>     
           </div>
 
-          <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
             <div class="form-group">
                 <label for="actividad_economica_principal">Actividad Económica Principal</label>
                 <input type="text" class="form-control" id="actividad_economica_principal" name="actividad_economica_principal" readonly>
@@ -777,6 +814,14 @@
                   </select>
               </div>     
           </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="form-group">
+                <label for="tipo_transaccion">Cuál</label>
+                <input type="text" class="form-control" name="tipo_transaccion">
+              </div>     
+          </div>
+
         </div>
         <!-- 8 -->
 
