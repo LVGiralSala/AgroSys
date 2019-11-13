@@ -2,6 +2,8 @@
 
 namespace AgroSys\Http\Controllers;
 
+use AgroSys\Http\Requests\PersonaJuridicaFormRequest;
+use AgroSys\persona_juridica;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -67,7 +69,7 @@ class PersonaJuridicaController extends Controller
         return view('persona.juridica.create',[
                     "persona_juridica"=>$persona_juridica,
                     "tipos_identificaciones"=>$tipo_identificacion,
-                    "instrumento_financieros"=>$instrumento_financiero,
+                    "instrumentos_financieros"=>$instrumento_financiero,
                     "tipos_empresas"=>$tipo_empresa,
                     "ciudades"=>$ciudad,
                     "tipos_vinculaciones"=>$tipo_vinculacion,
@@ -94,9 +96,53 @@ class PersonaJuridicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonaJuridicaFormRequest $request)
     {
-        //
+        $persona_juridica = new persona_juridica;
+        $mytime =Carbon::now('America/Bogota');
+        $persona_juridica->fecha_diligenciameinto=$mytime->toDateTimeString();
+        $persona_juridica->id_user='1';
+        $persona_juridica->id_trader='1';
+        $persona_juridica->id_estado_cliente='1';
+        $persona_juridica->id_estado_datos='1';
+        $persona_juridica->razon_social=$request->get('razon_social');
+        $persona_juridica->tipo_identificacion='6';
+        $persona_juridica->id=$request->get('num_identificacion');
+        $persona_juridica->dig_ver=$request->get('dig_ver');
+        $persona_juridica->direccion_notificacion=$request->get('direccion_notificacion');
+        $persona_juridica->id_depto_notificacion=$request->get('id_depto_notificacion');
+        $persona_juridica->id_ciudad_notificacion=$request->get('id_ciudad_notificacion');
+        $persona_juridica->telefono_notificacion=$request->get('telefono_notificacion');
+        $persona_juridica->direccion_oficina_princ=$request->get('direccion_oficina_princ');
+        $persona_juridica->id_depto_ofic_princ=$request->get('id_depto_ofic_princ');
+        $persona_juridica->id_ciudad_ofic_princ=$request->get('id_ciudad_ofic_princ');
+        $persona_juridica->telefono_oficina_princ=$request->get('telefono_oficina_princ');
+        $persona_juridica->pagina_web=$request->get('pagina_web');
+        $persona_juridica->fax_oficina=$request->get('fax_oficina');
+        $persona_juridica->referencia=$request->get('referencia');
+        $persona_juridica->id_doc_constitucion=$request->get('id_doc_contitucion');
+        $persona_juridica->doc_constitucion=$request->get('doc_constitucion');
+        $persona_juridica->num_doc_constitucion=$request->get('num_doc_constitucion');
+        $persona_juridica->fecha_radic_doc=$request->get('fecha_radic_doc');
+        $persona_juridica->id_ciudad_radc_doc=$request->get('id_ciudad_radc_doc');
+        $persona_juridica->id_info_trib_1=$request->get('id_info_trib_1');
+        $persona_juridica->id_origen_recursos=$request->get('id_origen_recursos');
+        $persona_juridica->origen_recursos=$request->get('origen_recursos');
+        $persona_juridica->id_tipo_empresa=$request->get('id_tipo_empresa');
+        $persona_juridica->tipo_empresa=$request->get('tipo_empresa');
+        $persona_juridica->id_codigo_CIIU=$request->get('id_codigo_CIIU');
+        $persona_juridica->id_instrumento_financiero=$request->get('id_instrumento_financiero');
+        $persona_juridica->fecha_vinculacion=$request->get('fecha_vinculacion');
+        $persona_juridica->id_ciudad_vinculacion=$request->get('id_ciudad_vinculacion');
+        $persona_juridica->id_tipo_vinculacion=$request->get('id_tipo_vinculacion');
+        $persona_juridica->id_clase_vinculacion=$request->get('id_clase_vinculacion');
+        $persona_juridica->lista_ONU='0';
+        $persona_juridica->lista_clinton='0';
+
+        $persona_juridica->id_rep_legales_ordenantes='123456';
+
+        $persona_juridica->save();
+        return Redirect::to('persona_juridica');
     }
 
     /**

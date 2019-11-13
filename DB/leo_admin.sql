@@ -13036,22 +13036,25 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `id_origen_recursos` int(11) NOT NULL,
   `id_estado_cliente` int(11) NOT NULL,
   `id_estado_datos` int(11) NOT NULL,
-  `id_tipo_retenedor` int(11) NOT NULL,
+  `id_tipo_retenedor` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL,
   `id_ciudad_radc_doc` int(11) NOT NULL,
+  `id_depto_notificacion` int(11) NOT NULL,
+  `id_depto_ofic_princ` int(11) NOT NULL,
   `id_ciudad_ofic_princ` int(11) NOT NULL,
   `id_ciudad_notificacion` int(11) NOT NULL,
   `id_rep_legales_ordenantes` int(11) NOT NULL,
   `id_trader` int(11) NOT NULL,
   `fecha_radic_doc` date NOT NULL,
   `razon_social` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `origen_recursos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `doc_constitucion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipo_empresa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `num_doc_constitucion` bigint(20) NOT NULL,
   `direccion_notificacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_oficina_princ` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_notificacion` bigint(20) NOT NULL,
   `telefono_oficina_princ` bigint(20) NOT NULL,
-  `celular_oficina` int(11) DEFAULT NULL,
   `fax_oficina` int(11) DEFAULT NULL,
   `pagina_web` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -13080,9 +13083,19 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   KEY `pk_persona_natural_info_tributaria_3_idx` (`id_info_trib_3`),
   KEY `pk_persona_juridica_origen_recursos_idx` (`id_origen_recursos`),
   KEY `pk_persona_juridica_doc_constitucion_idx` (`id_doc_constitucion`),
+  KEY `fk_persona_juridica_ciudad_ofic_princ_idx` (`id_ciudad_ofic_princ`),
+  KEY `fk_persona_juridica_ciudad_notificacion_idx` (`id_ciudad_notificacion`),
+  KEY `fk_persona_juridica_ciudad_radc_doc_idx` (`id_ciudad_radc_doc`),
+  KEY `fk_persona_juridica_depto_notificacion_idx` (`id_depto_notificacion`),
+  KEY `fk_persona_juridica_depto_ofic_princ_idx` (`id_depto_ofic_princ`),
   CONSTRAINT `fk_persona_juridica_ciiu` FOREIGN KEY (`id_codigo_CIIU`) REFERENCES `ciiu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_ciudad` FOREIGN KEY (`id_ciudad_vinculacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_ciudad_notificacion` FOREIGN KEY (`id_ciudad_notificacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_ciudad_ofic_princ` FOREIGN KEY (`id_ciudad_ofic_princ`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_ciudad_radc_doc` FOREIGN KEY (`id_ciudad_radc_doc`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_clase_vinculacion` FOREIGN KEY (`id_clase_vinculacion`) REFERENCES `clase_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_depto_notificacion` FOREIGN KEY (`id_depto_notificacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_persona_juridica_depto_ofic_princ` FOREIGN KEY (`id_depto_ofic_princ`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_estado_cliente` FOREIGN KEY (`id_estado_cliente`) REFERENCES `estado_cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_estado_datos` FOREIGN KEY (`id_estado_datos`) REFERENCES `estado_datos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_instrumento_financiero` FOREIGN KEY (`id_instrumento_financiero`) REFERENCES `instrumento_financiero` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -13100,8 +13113,9 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
 
 -- Volcando datos para la tabla leo_admin.persona_juridica: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona_juridica` DISABLE KEYS */;
-REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `id_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `doc_constitucion`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `celular_oficina`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciameinto`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
-	(999, 9, 5, 1, 1, 1, 3, 1, 7110, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-10-29', 'lv', NULL, 0, 'x', 's', 5, 5, 5, 5, 'lv.com.co', '1', 1, 1, '2019-10-29 14:54:16', '2019-10-29', '2019-10-29 14:54:18', NULL, NULL);
+REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_depto_notificacion`, `id_depto_ofic_princ`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `id_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `origen_recursos`, `doc_constitucion`, `tipo_empresa`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciameinto`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
+	(999, 9, 5, 1, 1, 1, 3, 1, 7110, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-10-29', 'lv', NULL, NULL, NULL, 0, 'x', 's', 5, 5, 5, 'lv.com.co', '1', 1, 1, '2019-10-29 14:54:16', '2019-10-29', '2019-10-29 14:54:18', NULL, NULL),
+	(900123123, 1, 6, 3, 4, 1217, 3, 3, 7110, 3, 3, NULL, NULL, 4, 1, 1, NULL, 1, 1218, 1205, 1208, 1209, 1202, 123456, 1, '2019-11-13', 'abc s.a', 'asdfasf', 'dafasdf', 'asdfasdfasf', 123456, 'dfadfadgad', 'fvczcvzxcvx', 12345678, 789456123, 123456123, 'abc.com.co', 'aasdfasdf', 0, 0, '2019-11-12 18:36:07', '2019-11-22', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `persona_juridica` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.persona_natural

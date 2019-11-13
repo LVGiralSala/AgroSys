@@ -45,7 +45,7 @@ class PersonaNaturalFormRequest extends FormRequest
             // 'lista_clinton'=>'required',
             // 'lista_ONU'=>'required',
             // 'id_trader'=>'required',
-            // 'estado'=>'required',
+            // 'id_estado_cliente'=>'required',
             // 'fecha_actualizacion'=>'required',
 
             /**

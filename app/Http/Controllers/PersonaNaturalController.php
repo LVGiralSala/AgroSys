@@ -129,7 +129,7 @@ class PersonaNaturalController extends Controller
         $persona_natural->id_user='1';
         $persona_natural->id_trader='1';
         $persona_natural->id_tipo_persona='1';
-        $persona_natural->id_estado_cliente=$request->get('id_estado_cliente');
+        $persona_natural->id_estado_cliente='1';
         $persona_natural->fecha_diligenciamiento=$mytime->toDateTimeString();
         $persona_natural->id_ciudad_vinculacion=$request->get('id_ciudad_vinculacion');
         $persona_natural->id_tipo_vinculacion=$request->get('id_tipo_vinculacion');
