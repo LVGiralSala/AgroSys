@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class pj_declaracion_facta extends Model
 {
-    protected $table = 'pj_declaracion_fatca';
+    protected $table = 'pj_declaracion_facta';
 
     public $timestamps=false;
     

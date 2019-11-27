@@ -12,6 +12,7 @@ class pj_representante_legal extends Model
 
     protected $fillable = [
         'tipo_identificacion',
+        'num_identificacion',
         'lugar_exp_doc',
         'lugar_nacimiento',
         'ciudad_residencia',
@@ -33,7 +34,7 @@ class pj_representante_legal extends Model
         'manejo_recursos_publicos',
         
         /**
-         * Origen Fondos
+         * Representante Legal
          */
     ];
 

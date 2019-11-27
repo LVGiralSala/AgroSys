@@ -13043,7 +13043,7 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `id_depto_ofic_princ` int(11) NOT NULL,
   `id_ciudad_ofic_princ` int(11) NOT NULL,
   `id_ciudad_notificacion` int(11) NOT NULL,
-  `id_rep_legales_ordenantes` int(11) NOT NULL,
+  `num_ident_rep_legales_ordenantes` int(11) NOT NULL,
   `id_trader` int(11) NOT NULL,
   `fecha_radic_doc` date NOT NULL,
   `razon_social` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -13111,11 +13111,12 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   CONSTRAINT `pk_persona_natural_info_tributaria_3` FOREIGN KEY (`id_info_trib_3`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.persona_juridica: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.persona_juridica: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona_juridica` DISABLE KEYS */;
-REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_depto_notificacion`, `id_depto_ofic_princ`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `id_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `origen_recursos`, `doc_constitucion`, `tipo_empresa`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciameinto`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
+REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_depto_notificacion`, `id_depto_ofic_princ`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `num_ident_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `origen_recursos`, `doc_constitucion`, `tipo_empresa`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciameinto`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
 	(999, 9, 5, 1, 1, 1, 3, 1, 7110, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-10-29', 'lv', NULL, NULL, NULL, 0, 'x', 's', 5, 5, 5, 'lv.com.co', '1', 1, 1, '2019-10-29 14:54:16', '2019-10-29', '2019-10-29 14:54:18', NULL, NULL),
-	(900123123, 1, 6, 3, 4, 1217, 3, 3, 7110, 3, 3, NULL, NULL, 4, 1, 1, NULL, 1, 1218, 1205, 1208, 1209, 1202, 123456, 1, '2019-11-13', 'abc s.a', 'asdfasf', 'dafasdf', 'asdfasdfasf', 123456, 'dfadfadgad', 'fvczcvzxcvx', 12345678, 789456123, 123456123, 'abc.com.co', 'aasdfasdf', 0, 0, '2019-11-12 18:36:07', '2019-11-22', NULL, NULL, NULL);
+	(900123123, 1, 6, 3, 4, 1217, 3, 3, 7110, 3, 3, NULL, NULL, 4, 1, 1, NULL, 1, 1218, 1205, 1208, 1209, 1202, 123456, 1, '2019-11-13', 'abc s.a', 'asdfasf', 'dafasdf', 'asdfasdfasf', 123456, 'dfadfadgad', 'fvczcvzxcvx', 12345678, 789456123, 123456123, 'abc.com.co', 'aasdfasdf', 0, 0, '2019-11-12 18:36:07', '2019-11-22', NULL, NULL, NULL),
+	(900333444, 3, 6, 3, 2, 1201, 3, 3, 7110, 1, 3, NULL, NULL, 1, 1, 1, NULL, 1, 1216, 1198, 1199, 1199, 1198, 90999123, 1, '2019-10-29', 'EspacioWeb S.A', NULL, NULL, NULL, 111111, 'Cll 50 N 78 -20', 'Tr 25 N 23 96', 77766655, 77766655, 78945612, 'EspacioWeb.Com.Co', 'Viviana Mera', 0, 0, '2019-11-27 14:41:14', '2019-11-13', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `persona_juridica` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.persona_natural
@@ -13271,6 +13272,9 @@ CREATE TABLE IF NOT EXISTS `pj_accionista` (
 
 -- Volcando datos para la tabla leo_admin.pj_accionista: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_accionista` DISABLE KEYS */;
+REPLACE INTO `pj_accionista` (`id`, `tipo_identificacion_accionista_1`, `tipo_identificacion_accionista_2`, `tipo_identificacion_accionista_3`, `tipo_identificacion_accionista_4`, `tipo_identificacion_accionista_5`, `id_pais_declaracion_tributaria_accionista_1`, `id_pais_declaracion_tributaria_accionista_2`, `id_pais_declaracion_tributaria_accionista_3`, `id_pais_declaracion_tributaria_accionista_4`, `id_pais_declaracion_tributaria_accionista_5`, `num_identificacion_accionista_1`, `nombre_completo_accionista_1`, `admin_recursos_publicos_accionista_1`, `ejerce_poder_publico_accionista_1`, `reconocimiento_publico_accionista_1`, `porc_participacion_accionista_1`, `admin_recursos_publicos_accionista_2`, `num_identificacion_accionista_2`, `nombre_completo_accionista_2`, `ejerce_poder_publico_accionista_2`, `reconocimiento_publico_accionista_2`, `porc_participacion_accionista_2`, `num_identificacion_accionista_3`, `nombre_completo_accionista_3`, `admin_recursos_publicos_accionista_3`, `ejerce_poder_publico_accionista_3`, `reconocimiento_publico_accionista_3`, `porc_participacion_accionista_3`, `num_identificacion_accionista_4`, `nombre_completo_accionista_4`, `admin_recursos_publicos_accionista_4`, `ejerce_poder_publico_accionista_4`, `reconocimiento_publico_accionista4`, `porc_participacion_accionista_4`, `num_identificacion_accionista_5`, `nombre_completo_accionista_5`, `admin_recursos_publicos_accionista_5`, `ejerce_poder_publico_accionista_5`, `reconocimiento_publico_accionista_5`, `porc_participacion_accionista_5`) VALUES
+	(900123123, 6, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 123123, 'zxc<zxczx<c', 0, 0, 0, 15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(900333444, 1, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 32323232, 'Federico Gutierrez', 0, 0, 0, 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `pj_accionista` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_declaracion_crs
@@ -13285,6 +13289,9 @@ CREATE TABLE IF NOT EXISTS `pj_declaracion_crs` (
 
 -- Volcando datos para la tabla leo_admin.pj_declaracion_crs: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_declaracion_crs` DISABLE KEYS */;
+REPLACE INTO `pj_declaracion_crs` (`id`, `id_pais_obligaciones_fiscales`, `obligaciones_fiscales_otros_paises`, `especificacion_obligaciones_fiscales`, `num_identificacion_fiscal_equivalente`) VALUES
+	(900123123, 1, 0, 'dfgzdgf', 11111),
+	(900333444, NULL, 0, NULL, NULL);
 /*!40000 ALTER TABLE `pj_declaracion_crs` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_declaracion_facta
@@ -13298,6 +13305,9 @@ CREATE TABLE IF NOT EXISTS `pj_declaracion_facta` (
 
 -- Volcando datos para la tabla leo_admin.pj_declaracion_facta: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_declaracion_facta` DISABLE KEYS */;
+REPLACE INTO `pj_declaracion_facta` (`id`, `obligaciones_tributarias_EEUU_US`, `num_TIN_equivalente`, `especificacion_obligaciones_tributarias`) VALUES
+	(900123123, 0, 111111, 'xzvzdxsv'),
+	(900333444, 0, NULL, NULL);
 /*!40000 ALTER TABLE `pj_declaracion_facta` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_info_financiera
@@ -13319,6 +13329,9 @@ CREATE TABLE IF NOT EXISTS `pj_info_financiera` (
 
 -- Volcando datos para la tabla leo_admin.pj_info_financiera: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_info_financiera` DISABLE KEYS */;
+REPLACE INTO `pj_info_financiera` (`id`, `fecha_corte`, `activos`, `pasivos`, `patrimonio`, `ingr_operac_mensuales`, `ingr_no_operac_mensuales`, `egre_operac_mensuales`, `egre_no_operac_mensuales`, `util_perd_operacional`, `util_perd_neta`, `descrip_ingr_egre_no_operacionales`) VALUES
+	(900123123, '2019-11-21', 100, 10, 2, 100, 100, 10, 10, 10, 10, 'gshfhgf'),
+	(900333444, '2019-11-05', 89000000, 25000000, 2, 50000000, 20000000, 12000000, 8000000, 2000000, 5000000, 'xxx');
 /*!40000 ALTER TABLE `pj_info_financiera` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_operaciones_moneda_extranjera
@@ -13361,6 +13374,9 @@ CREATE TABLE IF NOT EXISTS `pj_operaciones_moneda_extranjera` (
 
 -- Volcando datos para la tabla leo_admin.pj_operaciones_moneda_extranjera: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_operaciones_moneda_extranjera` DISABLE KEYS */;
+REPLACE INTO `pj_operaciones_moneda_extranjera` (`id`, `id_tipo_moneda_me_1`, `id_tipo_moneda_me_2`, `id_tipo_transaccion_1`, `id_tipo_transaccion_2`, `id_tipo_transaccion_3`, `id_tipo_transaccion_4`, `id_tipo_transaccion_5`, `ciudad_cuenta_bancaria_me_1`, `pais_cuenta_bancaria_me_1`, `ciudad_cuenta_bancaria_me_2`, `pais_cuenta_bancaria_me_2`, `cuentas_moneda_extranjera`, `cuenta_compensacion`, `entidad_cuenta_bancaria_me_1`, `num_cuenta_bancaria_me_1`, `entidad_cuenta_bancaria_me_2`, `num_cuenta_bancaria_me_2`, `tipo_transaccion`) VALUES
+	(900123123, 1, NULL, 6, NULL, NULL, NULL, NULL, 10, 10, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 'xdfsafs'),
+	(900333444, 1, NULL, 3, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `pj_operaciones_moneda_extranjera` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_ordenante
@@ -13387,6 +13403,9 @@ CREATE TABLE IF NOT EXISTS `pj_ordenante` (
 
 -- Volcando datos para la tabla leo_admin.pj_ordenante: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_ordenante` DISABLE KEYS */;
+REPLACE INTO `pj_ordenante` (`id`, `tipo_identificacion_ordenante_1`, `tipo_identificacion_ordenante_2`, `nombres_ordenante_1`, `apellidos_ordenante_1`, `num_identificacion_ordenante_1`, `direccion_ordenante_1`, `telefono_ordenante_1`, `nombres_ordenante_2`, `apellidos_ordenante_2`, `num_identificacion_ordenante_2`, `direccion_ordenante_2`, `telefono_ordenante_2`) VALUES
+	(900123123, 6, NULL, 'adsafdasfd', 'asdfasdf', 123456, 'xcvzxvxzcvzxvzxvxz', 545241, NULL, NULL, 0, NULL, 0),
+	(900333444, 1, NULL, 'Julio', 'Pérez', 44444456, 'Dg 58 N 89 32', 56898965, NULL, NULL, 0, NULL, 0);
 /*!40000 ALTER TABLE `pj_ordenante` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_origen_fondos
@@ -13396,7 +13415,7 @@ CREATE TABLE IF NOT EXISTS `pj_origen_fondos` (
   `id_entidad_cuenta_bancaria_2` int(11) DEFAULT NULL,
   `id_tipo_cuenta_bancaria_1` int(11) NOT NULL,
   `id_tipo_cuenta_bancaria_2` int(11) DEFAULT NULL,
-  `detalle_actividad_negocio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `detalle_actividad_negocio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `entidad_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `direccion_referencia_comercial` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_referencia_comercial` bigint(20) NOT NULL,
@@ -13415,15 +13434,19 @@ CREATE TABLE IF NOT EXISTS `pj_origen_fondos` (
 
 -- Volcando datos para la tabla leo_admin.pj_origen_fondos: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_origen_fondos` DISABLE KEYS */;
+REPLACE INTO `pj_origen_fondos` (`id`, `id_entidad_cuenta_bancaria_1`, `id_entidad_cuenta_bancaria_2`, `id_tipo_cuenta_bancaria_1`, `id_tipo_cuenta_bancaria_2`, `detalle_actividad_negocio`, `entidad_referencia_comercial`, `direccion_referencia_comercial`, `telefono_referencia_comercial`, `num_cuenta_bancaria_1`, `num_cuenta_bancaria_2`) VALUES
+	(900123123, 26, NULL, 3, NULL, 'dfghdgfh', 'asdfa', 'asdfsadf', 5555, '555', NULL),
+	(900333444, 26, NULL, 3, NULL, 'xxx', 'Banco Maya', 'Kr 58 # 23 10', 6666666, '1111', NULL);
 /*!40000 ALTER TABLE `pj_origen_fondos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pj_representante_legal
 CREATE TABLE IF NOT EXISTS `pj_representante_legal` (
   `id` bigint(20) NOT NULL,
   `tipo_identificacion` int(11) NOT NULL,
+  `num_identificacion` bigint(20) NOT NULL,
   `lugar_exp_doc` int(11) NOT NULL,
-  `lugar_nacimiento` int(11) NOT NULL DEFAULT '0',
-  `ciudad_residencia` int(11) NOT NULL DEFAULT '0',
+  `lugar_nacimiento` int(11) NOT NULL,
+  `ciudad_residencia` int(11) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `fecha_exp_doc` date NOT NULL,
   `apellidos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -13435,10 +13458,10 @@ CREATE TABLE IF NOT EXISTS `pj_representante_legal` (
   `celular` bigint(20) NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `persona_expuesta_publicamente` tinyint(1) NOT NULL,
-  `desc_pers_recon_public` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc_pers_recon_public` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cargo_publico_reciente` tinyint(1) NOT NULL,
-  `nombre_cargo_publico` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `institucion_cargo_publico` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_cargo_publico` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `institucion_cargo_publico` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `manejo_recursos_publicos` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
@@ -13452,8 +13475,11 @@ CREATE TABLE IF NOT EXISTS `pj_representante_legal` (
   CONSTRAINT `fk_pj_representante_legal_tipo_identificacion` FOREIGN KEY (`tipo_identificacion`) REFERENCES `tipo_identificacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.pj_representante_legal: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.pj_representante_legal: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `pj_representante_legal` DISABLE KEYS */;
+REPLACE INTO `pj_representante_legal` (`id`, `tipo_identificacion`, `num_identificacion`, `lugar_exp_doc`, `lugar_nacimiento`, `ciudad_residencia`, `fecha_nacimiento`, `fecha_exp_doc`, `apellidos`, `nombres`, `vinculo_func_agrobolsa`, `nombre_vinc_func_agrobolsa`, `direccion_residencia`, `telefono`, `celular`, `email`, `persona_expuesta_publicamente`, `desc_pers_recon_public`, `cargo_publico_reciente`, `nombre_cargo_publico`, `institucion_cargo_publico`, `manejo_recursos_publicos`) VALUES
+	(900123123, 1, 123456, 1206, 1206, 1218, '2019-11-13', '2019-11-13', 'Giraldo', 'Laura', 1, 'azsd', 'sdfsdaf', 111111111, 1111111111, 'asd@asd.com', 1, 'asd', 1, 'asd', 'asd', 1),
+	(900333444, 1, 90999123, 1218, 1218, 1216, '2019-11-04', '2019-10-29', 'Restrepo', 'Cesar', 0, NULL, 'Dig 98 N 45 30', 555432123, 3285649852, 'Espacioweb@gmail.com', 0, NULL, 0, NULL, NULL, 0);
 /*!40000 ALTER TABLE `pj_representante_legal` ENABLE KEYS */;
 
 -- Volcando estructura para tabla leo_admin.pn_declaracion_crs
