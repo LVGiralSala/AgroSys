@@ -220,7 +220,7 @@
 
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <div class="form-group">
-                        <label for="id_ciudad_radc_doc">Ciudad  Ofic. Principal</label>
+                        <label for="id_ciudad_radc_doc">Ciudad  Radicación</label>
                         <select name="id_ciudad_radc_doc" class="form-control" required>
                         @foreach($ciudades as $ciu)
                           <option value="{{$ciu->id}}" selected>{{$ciu->nombre_ciudad}}</option>

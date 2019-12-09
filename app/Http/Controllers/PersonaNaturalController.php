@@ -401,20 +401,20 @@ class PersonaNaturalController extends Controller
      */
     public function update(PersonaNaturalFormRequest $request)
     {
+        $mytime =Carbon::now('America/Bogota');
         $id = $request->get('num_identificacion');
         $persona_natural = persona_natural::find($id);
-        $mytime =Carbon::now('America/Bogota');
         $persona_natural->id_user='1';
         $persona_natural->id_trader='1';
         $persona_natural->id_tipo_persona='1';
         $persona_natural->id_estado_cliente=$request->get('id_estado_cliente');
-        $persona_natural->fecha_diligenciamiento=$mytime->toDateTimeString();
+        // $persona_natural->fecha_diligenciamiento=$mytime->toDateTimeString();
         $persona_natural->id_ciudad_vinculacion=$request->get('id_ciudad_vinculacion');
         $persona_natural->id_tipo_vinculacion=$request->get('id_tipo_vinculacion');
         $persona_natural->fecha_vinculacion=$request->get('fecha_vinculacion');
         $persona_natural->id_clase_vinculacion=$request->get('id_clase_vinculacion');
         $persona_natural->id_instrumento_financiero=$request->get('id_instrumento_financiero');
-        $persona_natural->id_estado_datos='1';
+        $persona_natural->id_estado_datos='2';
         $persona_natural->nombres=$request->get('nombres');
         $persona_natural->apellidos=$request->get('apellidos');
         $persona_natural->tipo_identificacion=$request->get('tipo_identificacion');
