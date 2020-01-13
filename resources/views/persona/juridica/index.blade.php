@@ -12,7 +12,7 @@
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="form-group">
               
-            {{-- <a href="{{route('pj.excel')}}"><button class="btn btn-success" ><i class="fas fa-download"></i>     Exportar</button></a> --}}
+            <a href="{{route('pj.excel')}}"><button class="btn btn-success" ><i class="fas fa-download"></i>     Exportar</button></a>
           </div>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
@@ -29,6 +29,7 @@
             <th style="width: 105px">Actividad Económica</th>
             <th style="width: 39px">Acción</th>
            </thead> 
+           
             @foreach ($personas_juridicas as $item) 
                    <tr>
                      <td>{{ $item->id }} - {{ $item->dig_ver}}</td>

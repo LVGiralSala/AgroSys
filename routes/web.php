@@ -66,4 +66,5 @@ Route::post('sistema/buscar/ocupacion','OcupacionController@searchOcupacion')->n
 
 
 // Excel Routes
-Route::get('pn-list-excel','ExcelController@exportExcel')->name('pn.excel');
+Route::get('pn-list-excel','ExcelController@exportExcelPn')->name('pn.excel');
+Route::get('pj-list-excel','ExcelController@exportExcelPj')->name('pj.excel');

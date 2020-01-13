@@ -50,7 +50,7 @@ class persona_juridica extends Model
         'referencia',
         'lista_clinton',
         'lista_ONU',
-        'fecha_diligenciameinto',
+        'fecha_diligenciamiento',
         'fecha_vinculacion',
         'fecha_actualizacion',
         

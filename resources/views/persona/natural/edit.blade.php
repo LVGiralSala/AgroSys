@@ -619,10 +619,11 @@
             </div>     
           </div>
 
-          <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12">
+          <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
             <div class="form-group">
                 <label for="actividad_economica_principal">Actividad Económica Principal</label>
-                <input type="text" class="form-control" id="actividad_economica_principal" name="actividad_economica_principal" readonly>
+                <textarea name="actividad_economica_principal" id="actividad_economica_principal"  class="form-control" style="height:38px; min-height:38px;" readonly></textarea>
+                {{-- <input type="text" class="form-control" id="actividad_economica_principal" name="actividad_economica_principal" readonly> --}}
             </div>     
           </div>
 

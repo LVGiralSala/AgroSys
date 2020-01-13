@@ -341,7 +341,8 @@
                 <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
                     <div class="form-group">
                         <label for="actividad_economica_principal">Actividad Económica Principal</label>
-                        <input type="text" class="form-control" id="actividad_economica_principal" name="actividad_economica_principal" readonly>
+                        <textarea name="actividad_economica_principal" id="actividad_economica_principal"  class="form-control" style="height:38px; min-height:38px;" readonly></textarea>
+                        {{-- <input type="text" class="form-control" id="actividad_economica_principal" name="actividad_economica_principal" readonly> --}}
                     </div>     
                 </div>
 
@@ -804,7 +805,7 @@
                     <div class="form-group">
                         <label for="descrip_ingr_egre_no_operacionales">Descripción de Ingresos y Egresos No Operacionales</label>
                         <textarea style="height: 38px; min-height:38px" type="text" class="form-control" name="descrip_ingr_egre_no_operacionales" required
-                        ></textarea>
+                        ><?php echo $info_finan->descrip_ingr_egre_no_operacionales?></textarea>
                     </div>     
                 </div>
                 
@@ -821,7 +822,7 @@
                     <div class="form-group">
                     <label for="detalle_actividad_negocio">Fuente de Fondos</label>
                     <textarea style="height:38px; min-height:38px;" type="text" class="form-control" name="detalle_actividad_negocio" required
-                    ></textarea>
+                    ><?php echo $orig_fond->detalle_actividad_negocio?></textarea>
                     </div>
                 </div>
                 

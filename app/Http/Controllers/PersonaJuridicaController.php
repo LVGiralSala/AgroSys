@@ -107,7 +107,7 @@ class PersonaJuridicaController extends Controller
     {
         $persona_juridica = new persona_juridica;
         $mytime =Carbon::now('America/Bogota');
-        $persona_juridica->fecha_diligenciameinto=$mytime->toDateTimeString();
+        $persona_juridica->fecha_diligenciamiento=$mytime->toDateTimeString();
         $persona_juridica->id_user='1';
         $persona_juridica->id_trader='1';
         $persona_juridica->id_estado_cliente='1';

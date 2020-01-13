@@ -61,7 +61,7 @@ class PersonaJuridicaFormRequest extends FormRequest
             // 'lista_clinton'=>'required',
             // 'lista_ONU'=>'required',
             // 'fecha_actualizacion'=>'required',
-            // 'fecha_diligenciameinto'=>'required',
+            // 'fecha_diligenciamiento'=>'required',
             // ''=>'required',
 
             /**
