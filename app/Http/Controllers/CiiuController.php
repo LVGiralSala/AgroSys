@@ -86,6 +86,12 @@ class CiiuController extends Controller
     public function search(Request $request)
     {
         $ciiu = ciiu::find($request->id);
+
+        $res = response()->json($ciiu);
+        if($res == null)
+        {
+            true;
+        }
         return response()->json($ciiu);
     }
 

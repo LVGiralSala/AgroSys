@@ -25,8 +25,8 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
 if ($options['register'] ?? true) {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Auth\RegisterController@register');
 }
+Route::post('register', 'Auth\RegisterController@register');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -34,12 +34,12 @@ Route::get('/index2', 'indexController@index')->name('index2');
 
 
 //Persona Natural
-Route::resource('persona_natural','PersonaNaturalController');
-// Route::get('persona_natural','PersonaNaturalController@index')->name('pn_index');
-// Route::get('persona_natural/create','PersonaNaturalController@create')->name('pn_create');
-// Route::post('persona_natural','PersonaNaturalController@store')->name('pn_store');
-// Route::get('persona_natural/{id}','PersonaNaturalController@edit')->name('pn_edit');
-// Route::put('persona_natural','PersonaNaturalController@update')->name('pn_update');
+// Route::resource('persona_natural','PersonaNaturalController');
+Route::get('persona_natural','PersonaNaturalController@index')->name('pn_index');
+Route::get('persona_natural/create','PersonaNaturalController@create')->name('pn_create');
+Route::post('persona_natural','PersonaNaturalController@store')->name('pn_store');
+Route::get('persona_natural/{id}','PersonaNaturalController@edit')->name('pn_edit');
+Route::put('persona_natural','PersonaNaturalController@update')->name('pn_update');
 // Route::delete('persona_natural','PersonaNaturalController@destroy')->name('pn_destroy');
 
 //Persona Juridica

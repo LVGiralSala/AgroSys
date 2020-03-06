@@ -10,7 +10,8 @@
     <ul class="navbar-nav mr-auto">
       
       @if (Auth::guest())
-          <li><a class="nav-link" href="{{ url('/login') }}" ><i class="icon-user"></i> Ingresar</a></li>
+      <li><a class="nav-link" href="{{ url('/register') }}" ><i class="icon-user"></i> Ingresar</a></li>
+          
           
       @else
       <li class="nav-item dropdown">
@@ -33,7 +34,6 @@
         </div>
       </li>
       @endif
-
     </ul>
   </div>
 </nav>

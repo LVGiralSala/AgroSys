@@ -12484,7 +12484,7 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lista_clinton` tinyint(1) NOT NULL,
   `lista_ONU` tinyint(1) NOT NULL,
-  `fecha_diligenciameinto` datetime NOT NULL,
+  `fecha_diligenciamiento` datetime NOT NULL,
   `fecha_vinculacion` date NOT NULL,
   `fecha_actualizacion` datetime DEFAULT NULL,
   `create_at` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -12502,9 +12502,6 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   KEY `fk_persona_juridica_estado_cliente_idx` (`id_estado_cliente`),
   KEY `fk_persona_juridica_user_idx` (`id_user`),
   KEY `fk_persona_juridica_estado_datos_idx` (`id_estado_datos`),
-  KEY `pk_persona_natural_info_tributaria_1_idx` (`id_info_trib_1`),
-  KEY `pk_persona_natural_info_tributaria_2_idx` (`id_info_trib_2`),
-  KEY `pk_persona_natural_info_tributaria_3_idx` (`id_info_trib_3`),
   KEY `pk_persona_juridica_origen_recursos_idx` (`id_origen_recursos`),
   KEY `pk_persona_juridica_doc_constitucion_idx` (`id_doc_constitucion`),
   KEY `fk_persona_juridica_ciudad_ofic_princ_idx` (`id_ciudad_ofic_princ`),
@@ -12512,6 +12509,9 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   KEY `fk_persona_juridica_ciudad_radc_doc_idx` (`id_ciudad_radc_doc`),
   KEY `fk_persona_juridica_depto_notificacion_idx` (`id_depto_notificacion`),
   KEY `fk_persona_juridica_depto_ofic_princ_idx` (`id_depto_ofic_princ`),
+  KEY `pk_persona_juridica_info_tributaria_1_idx` (`id_info_trib_1`),
+  KEY `pk_persona_juridica_info_tributaria_2_idx` (`id_info_trib_2`),
+  KEY `pk_persona_juridica_info_tributaria_3_idx` (`id_info_trib_3`),
   CONSTRAINT `fk_persona_juridica_ciiu` FOREIGN KEY (`id_codigo_CIIU`) REFERENCES `ciiu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_ciudad` FOREIGN KEY (`id_ciudad_vinculacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_ciudad_notificacion` FOREIGN KEY (`id_ciudad_notificacion`) REFERENCES `ciudad` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -12529,16 +12529,16 @@ CREATE TABLE IF NOT EXISTS `persona_juridica` (
   CONSTRAINT `fk_persona_juridica_tipo_vinculacion` FOREIGN KEY (`id_tipo_vinculacion`) REFERENCES `tipo_vinculacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_persona_juridica_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pk_persona_juridica_doc_constitucion` FOREIGN KEY (`id_doc_constitucion`) REFERENCES `documento_constitucion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `pk_persona_juridica_origen_recursos` FOREIGN KEY (`id_origen_recursos`) REFERENCES `origen_recursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `pk_persona_natural_info_tributaria_1` FOREIGN KEY (`id_info_trib_1`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `pk_persona_natural_info_tributaria_2` FOREIGN KEY (`id_info_trib_2`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `pk_persona_natural_info_tributaria_3` FOREIGN KEY (`id_info_trib_3`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `pk_persona_juridica_info_tributaria_1` FOREIGN KEY (`id_info_trib_1`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_juridica_info_tributaria_2` FOREIGN KEY (`id_info_trib_2`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_juridica_info_tributaria_3` FOREIGN KEY (`id_info_trib_3`) REFERENCES `info_tributaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pk_persona_juridica_origen_recursos` FOREIGN KEY (`id_origen_recursos`) REFERENCES `origen_recursos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla leo_admin.persona_juridica: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla leo_admin.persona_juridica: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona_juridica` DISABLE KEYS */;
-REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_depto_notificacion`, `id_depto_ofic_princ`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `num_ident_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `origen_recursos`, `doc_constitucion`, `tipo_empresa`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciameinto`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
-	(777, 1, 6, 1, 4, 1, 3, 3, 7110, 1, 3, NULL, NULL, 4, 1, 2, NULL, 1, 1216, 1198, 1198, 1198, 1198, 222, 1, '2019-11-26', 'Nefi', NULL, NULL, NULL, 111, 'calle', 'afasdf', 5489669, 888, 8888, 'asdfasdfasfd', 'asdfasdfas', 0, 0, '2019-12-03 18:48:13', '2019-11-28', NULL, NULL, NULL),
+REPLACE INTO `persona_juridica` (`id`, `dig_ver`, `tipo_identificacion`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_vinculacion`, `id_tipo_vinculacion`, `id_clase_vinculacion`, `id_codigo_CIIU`, `id_doc_constitucion`, `id_info_trib_1`, `id_info_trib_2`, `id_info_trib_3`, `id_origen_recursos`, `id_estado_cliente`, `id_estado_datos`, `id_tipo_retenedor`, `id_user`, `id_ciudad_radc_doc`, `id_depto_notificacion`, `id_depto_ofic_princ`, `id_ciudad_ofic_princ`, `id_ciudad_notificacion`, `num_ident_rep_legales_ordenantes`, `id_trader`, `fecha_radic_doc`, `razon_social`, `origen_recursos`, `doc_constitucion`, `tipo_empresa`, `num_doc_constitucion`, `direccion_notificacion`, `direccion_oficina_princ`, `telefono_notificacion`, `telefono_oficina_princ`, `fax_oficina`, `pagina_web`, `referencia`, `lista_clinton`, `lista_ONU`, `fecha_diligenciamiento`, `fecha_vinculacion`, `fecha_actualizacion`, `create_at`, `update_at`) VALUES
+	(777, 1, 6, 1, 4, 1, 3, 3, 7110, 1, 3, NULL, NULL, 4, 2, 2, NULL, 1, 1216, 1198, 1198, 1198, 1198, 222, 1, '2019-11-26', 'Nefi', NULL, NULL, NULL, 111, 'calle', 'afasdf', 5489669, 888, 8888, 'asdfasdfasfd', 'asdfasdfas', 0, 0, '2019-12-03 18:48:13', '2019-11-28', NULL, NULL, NULL),
 	(900123123, 1, 6, 3, 4, 1217, 3, 3, 7110, 3, 3, NULL, NULL, 4, 1, 1, NULL, 1, 1218, 1205, 1208, 1209, 1202, 123456, 1, '2019-11-13', 'abc s.a', 'asdfasf', 'dafasdf', 'asdfasdfasf', 123456, 'dfadfadgad', 'fvczcvzxcvx', 12345678, 789456123, 123456123, 'abc.com.co', 'aasdfasdf', 0, 0, '2019-11-12 18:36:07', '2019-11-22', NULL, NULL, NULL),
 	(900333444, 3, 6, 3, 2, 1201, 3, 3, 7110, 1, 3, NULL, NULL, 1, 1, 1, NULL, 1, 1216, 1198, 1199, 1199, 1198, 90999123, 1, '2019-10-29', 'EspacioWeb S.A', NULL, NULL, NULL, 111111, 'Cll 50 N 78 -20', 'Tr 25 N 23 96', 77766655, 77766655, 78945612, 'EspacioWeb.Com.Co', 'Viviana Mera', 0, 0, '2019-11-27 14:41:14', '2019-11-13', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `persona_juridica` ENABLE KEYS */;
@@ -12627,7 +12627,7 @@ CREATE TABLE IF NOT EXISTS `persona_natural` (
 -- Volcando datos para la tabla leo_admin.persona_natural: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `persona_natural` DISABLE KEYS */;
 REPLACE INTO `persona_natural` (`id`, `tipo_identificacion`, `lugar_exp_doc`, `id_estado_civil`, `id_genero`, `id_instrumento_financiero`, `id_tipo_empresa`, `id_ciudad_residencia`, `id_ciudad_trabajo`, `id_tipo_vinculacion`, `id_ciudad_vinculacion`, `id_clase_vinculacion`, `id_tipo_persona`, `id_tipo_cliente`, `id_estado_cliente`, `id_ocupacion`, `id_estado_datos`, `id_user`, `id_trader`, `fecha_exp_doc`, `nombres`, `apellidos`, `direccion_residencia`, `telefono`, `celular`, `email`, `empresa_trabajo`, `cargo_desempenio`, `telefono_oficina`, `direccion_oficina`, `fecha_vinculacion`, `lista_clinton`, `lista_ONU`, `tipo_empresa`, `fecha_diligenciamiento`, `vinculo_func_agrobolsa`, `nombre_vinc_func_agrobolsa`, `persona_expuesta_publicamente`, `desc_pers_recon_public`, `cargo_publico_reciente`, `nombre_cargo_publico`, `institucion_cargo_publico`, `manejo_recursos_publicos`, `actualizacion`, `fecha_actualizacion`, `create_at`, `updated_at`) VALUES
-	(999, 2, 41, 5, 2, 3, 4, NULL, 1210, 3, 1209, 3, 1, 2, 1, 1, 2, 1, 1, '2019-09-07', 'd', 'd', 'sds', 444, 444, 'abc@gmail.com', 'sdf', '1', 4444, 'dsfsd', '2019-09-07', 0, 0, NULL, '2019-09-13 23:37:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+	(999, 2, 41, 5, 2, 3, 4, NULL, 1210, 3, 1209, 3, 1, 2, 2, 1, 2, 1, 1, '2019-09-07', 'd', 'd', 'sds', 444, 444, 'abc@gmail.com', 'sdf', '1', 4444, 'dsfsd', '2019-09-07', 0, 0, NULL, '2019-09-13 23:37:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 	(5888, 5, 1202, 5, 2, 3, 4, NULL, 1217, 3, 1218, 3, 1, 1, 1, 1, 1, 1, 1, '2019-09-07', 'd', 'd', 'df', 44, 444, 'dddd@gmail.com', 'sdfsdf', 'sdfs', 4333, 'sdf', '2019-09-07', 0, 0, NULL, '2019-09-11 22:42:29', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 	(46456, 6, 1202, 2, 2, 3, 4, NULL, 1208, 1, 1217, 3, 1, 4, 1, 1, 1, 1, 1, '1994-06-15', 'hernan', 'lopez', 'fgsdg', NULL, 546, 'hlh@gmail.com', 'zsdfg', 'sdfsadf', 56776, 'sfdg', '2019-09-04', 0, 0, NULL, '2019-10-02 14:19:30', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 	(123456, 3, 1205, 3, 1, 1, 4, NULL, 1217, 3, 1219, 3, 1, 1, 1, 1, 1, 1, 1, '2000-02-22', 'Adriana', 'Bogota', 'lsdkhfj', NULL, 123456789, 'abg@gmail.com', 'dasf', 'asdfasf', 54654, 'asdfas', '2019-09-30', 0, 0, NULL, '2019-10-01 21:21:53', 0, NULL, 0, NULL, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
